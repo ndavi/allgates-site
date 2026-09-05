@@ -2,10 +2,19 @@ export const contactEmail = 'contact@allgates.net';
 
 export const site = {
   name: 'Allgates',
+  legalName: 'Allgates Sàrl',
   descriptor: 'Ingénierie logicielle en Suisse',
   description:
     'Allgates conçoit des applications métier, des automatisations et des intégrations de l’IA adaptées aux petites structures.',
   contactEmail,
+} as const;
+
+export const legalCompany = {
+  name: site.legalName,
+  address: ['Route de Saint-Cergue 42', '1270 Trélex', 'Suisse'],
+  uid: 'CHE-114.036.884',
+  commercialRegisterNumber: 'CH-550.1.053.210-8',
+  commercialRegister: 'Registre du commerce du canton de Vaud',
 } as const;
 
 export const navigation = [
