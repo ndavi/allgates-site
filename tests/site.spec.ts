@@ -62,7 +62,7 @@ test('la navigation compacte reste utilisable au clavier', async ({ page }) => {
   await expect(menu).toHaveAttribute('aria-expanded', 'true');
 
   const offerLink = page.getByRole('navigation', { name: /navigation principale/i })
-    .getByRole('link', { name: /solutions pour avocats/i });
+    .getByRole('link', { name: /archives pour avocats/i });
   await expect(offerLink).toBeVisible();
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
@@ -127,7 +127,7 @@ test('le contact et la navigation restent accessibles sans JavaScript sur mobile
   const menu = page.getByRole('button', { name: /menu/i });
   await expect(menu).toBeHidden();
   const navigationLink = page.getByRole('navigation', { name: /navigation principale/i })
-    .getByRole('link', { name: /solutions pour avocats/i });
+    .getByRole('link', { name: /archives pour avocats/i });
   await expect(navigationLink).toBeVisible();
   const [navigationBox, titleBox] = await Promise.all([
     navigationLink.boundingBox(),

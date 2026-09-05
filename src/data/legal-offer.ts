@@ -1,57 +1,40 @@
 export const legalOffer = {
-	headline: 'Retrouvez les pièces qui comptent dans vos dossiers.',
-	summary: 'Allgates aide votre cabinet à rassembler ses archives emails et documentaires dans un corpus consultable, afin de rechercher les contenus, rapprocher les fichiers et revenir aux sources.',
+	headline: 'Retrouvez les échanges et pièces utiles dans vos archives.',
+	summary: 'Allgates prépare et indexe les exports fournis par votre cabinet, mène les recherches convenues et restitue chaque résultat avec un lien vers sa source.',
 } as const;
 
 export const sourceTypes = [
 	{
 		title: 'Archives de messagerie',
-		text: 'Les archives PST fournies peuvent être intégrées à la préparation du corpus.',
+		text: 'Fichiers PST et autres exports de messagerie compatibles avec le périmètre convenu.',
 	},
 	{
 		title: 'Exports documentaires',
-		text: 'Les exports SharePoint ou OneDrive fournis peuvent être préparés et indexés.',
+		text: 'Exports SharePoint ou OneDrive, avec l’arborescence et les métadonnées disponibles.',
 	},
 	{
 		title: 'Pièces et dossiers',
-		text: 'Les fichiers remis avec leur contexte disponible peuvent être intégrés au périmètre convenu.',
+		text: 'Documents transmis avec les éléments de contexte nécessaires à leur interprétation.',
 	},
 ] as const;
 
 export const offerSteps = [
 	{
-		title: 'Préparer le corpus',
-		text: 'Qualifier les sources, extraire les contenus, repérer les doublons, appliquer l’OCR lorsque nécessaire et indexer les éléments du périmètre retenu.',
+		title: 'Préparer les données',
+		text: 'Qualifier les formats, extraire les contenus, repérer les doublons, appliquer l’OCR lorsque nécessaire et dresser un état du corpus.',
 	},
 	{
-		title: 'Examiner les rapprochements utiles',
-		text: 'Rechercher dans les contenus, relier messages et pièces jointes, puis reconstituer des échanges à partir des éléments disponibles.',
+		title: 'Répondre à une question précise',
+		text: 'Rechercher dans les contenus, relier les messages à leurs pièces jointes et reconstituer les échanges utiles à l’analyse.',
 	},
 	{
-		title: 'Restituer avec les sources',
-		text: 'Présenter les résultats de façon exploitable, en gardant le lien avec les documents et messages qui les étayent.',
-	},
-] as const;
-
-export const deliverables = [
-	{
-		title: 'État du corpus',
-		text: 'Une vision des données examinées et des limites observées.',
-	},
-	{
-		title: 'Résultats sourcés',
-		text: 'Des recherches ou rapprochements accompagnés de leur origine consultable.',
-	},
-	{
-		title: 'Restitution à définir',
-		text: 'Rapport, corpus consultable, outil de recherche ou combinaison adaptée : les éléments sont composés selon la mission et précisés au cadrage.',
+		title: 'Remettre des résultats vérifiables',
+		text: 'Fournir les résultats avec leur origine consultable, sous la forme convenue au cadrage : rapport, corpus consultable ou outil de recherche.',
 	},
 ] as const;
 
 export const analysisLimits = [
-	'Une empreinte rapproche des copies au contenu binaire identique ; une modification de contenu la change normalement.',
-	'Les métadonnées et horodatages sont des indices. Leur origine et leurs limites doivent rester visibles ; ils ne certifient pas l’identité réelle de l’auteur.',
-	'Les occurrences et éléments de contexte peuvent éclairer une circulation documentaire ; une correspondance seule ne démontre pas une exfiltration.',
-	'Les éléments encore présents dans les archives peuvent être examinés ; la récupération d’effacements définitifs ne peut pas être présumée.',
-	'Les résultats aident l’analyse du cabinet. Leur force probante relève de l’appréciation juridique et du contexte du dossier.',
+	'Les recherches portent sur les éléments présents dans les archives fournies ; une suppression définitive ne peut pas être récupérée par défaut.',
+	'Les empreintes, métadonnées et horodatages sont des indices à interpréter dans leur contexte ; ils ne suffisent pas seuls à établir un fait.',
+	'Les résultats restent liés à leurs sources ; leur portée juridique relève de l’analyse du cabinet et du contexte du dossier.',
 ] as const;

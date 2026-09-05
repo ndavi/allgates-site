@@ -19,7 +19,7 @@ export const legalCompany = {
 
 export const navigation = [
   { label: 'Accueil', href: '/' },
-  { label: 'Solutions pour avocats', href: '/avocats/' },
+  { label: 'Archives pour avocats', href: '/avocats/' },
   { label: 'Contact', href: '/contact/' },
 ] as const;
 
@@ -65,13 +65,13 @@ export const method = [
 ] as const;
 
 export const credibility = [
-  'Une expérience senior de la conception à la mise en service',
-  'La maîtrise de projets métier et de systèmes complexes',
-  'Une société suisse, engagée dans un échange direct et précis',
+  'Un interlocuteur technique senior, du cadrage aux évolutions',
+  'Architecture, développement et mise en service réunis dans une même intervention',
+  'Allgates Sàrl, société établie dans le canton de Vaud',
 ] as const;
 
 export const contactCta = {
-  title: 'Votre besoin mérite un outil précis.',
+  title: 'Partons du problème à résoudre.',
   description:
-    'Décrivez-nous votre contexte. Un premier échange permet de clarifier le besoin et de cadrer une intervention avant devis.',
+    'Décrivez-nous votre contexte et le résultat recherché. Nous vous répondrons pour préciser la prochaine étape.',
 } as const;

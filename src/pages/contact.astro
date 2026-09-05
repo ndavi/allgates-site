@@ -1,7 +1,6 @@
 ---
 import ContactForm from '../components/ContactForm.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { contactEmail } from '../data/site';
 
 const configuredEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? '';
 const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEndpoint)
@@ -11,7 +10,7 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
 
 <SiteLayout
   title="Contact | Allgates"
-  description="Décrivez votre besoin à Allgates pour préparer un premier échange de cadrage avant devis."
+  description="Décrivez à Allgates le fonctionnement actuel et le résultat recherché pour préparer un premier échange."
 >
   <section class="section contact-intro">
     <div class="container contact-intro__grid">
@@ -19,7 +18,7 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
         <p class="eyebrow">Prendre contact</p>
         <h1>Parlons de votre besoin.</h1>
         <p class="lead">
-          Quelques lignes suffisent pour nous donner le contexte. Nous reviendrons vers vous afin de préciser le besoin et de déterminer la suite utile.
+          Décrivez en quelques lignes le fonctionnement actuel et ce que vous souhaitez améliorer. Nous vous répondrons pour préciser la suite.
         </p>
       </div>
 
@@ -40,10 +39,10 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
       </div>
 
       <div class="contact-context">
-        <p class="eyebrow">Avant devis</p>
-        <h2 id="contact-form-title">Décrivez votre contexte</h2>
+        <p class="eyebrow">Pour commencer</p>
+        <h2 id="contact-form-title">Deux informations suffisent</h2>
         <p>
-          Cette demande ouvre un échange de cadrage. Elle ne vaut ni devis, ni engagement sur un périmètre ou un délai.
+          Nous préciserons ensuite les contraintes, le périmètre et la prochaine étape avec vous.
         </p>
 
         <ol class="contact-steps">
@@ -55,16 +54,7 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
             <span>02</span>
             <div><strong>Le résultat recherché</strong><p>Ce que vous aimeriez simplifier, automatiser ou rendre possible.</p></div>
           </li>
-          <li>
-            <span>03</span>
-            <div><strong>Un premier échange</strong><p>Nous précisons les contraintes et la prochaine étape pertinente.</p></div>
-          </li>
         </ol>
-
-        <p class="direct-email">
-          Vous préférez écrire directement ?<br />
-          <a class="text-link" href={`mailto:${contactEmail}`}>{contactEmail}</a>
-        </p>
       </div>
 
     </div>
@@ -164,7 +154,7 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
     line-height: 1.05;
   }
 
-  .contact-context > p:not(.eyebrow, .direct-email) {
+  .contact-context > p:not(.eyebrow) {
     color: var(--color-muted);
     line-height: 1.65;
   }
@@ -204,19 +194,6 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
     color: var(--color-muted);
     font-size: 0.92rem;
     line-height: 1.55;
-    overflow-wrap: anywhere;
-  }
-
-  .direct-email {
-    color: var(--color-muted);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    overflow-wrap: anywhere;
-  }
-
-  .direct-email .text-link {
-    display: inline;
-    max-width: 100%;
     overflow-wrap: anywhere;
   }
 

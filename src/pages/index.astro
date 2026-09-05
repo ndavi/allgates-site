@@ -12,30 +12,30 @@ import { legalOffer } from '../data/legal-offer';
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
-        <p class="hero__kicker">Ingénierie logicielle pour petites structures</p>
-        <h1>Des outils métier à la mesure de votre structure.</h1>
-        <p class="hero__intro">Applications sur mesure, automatisation et intégration de l’IA : Allgates vous accompagne de l’analyse du besoin à la mise en service.</p>
+        <p class="hero__kicker">Applications métier, automatisation et IA</p>
+        <h1>Des outils adaptés à votre manière de travailler.</h1>
+        <p class="hero__intro">Allgates conçoit des applications et des automatisations pour simplifier les opérations, relier les données et remplacer les tâches répétitives. De l’analyse du besoin à la mise en service.</p>
         <div class="hero__actions">
           <a class="button" href="/contact/">Parler de votre besoin</a>
           <a class="button button--secondary" href="#expertises">Découvrir nos expertises</a>
         </div>
       </div>
 
-      <div class="flow" aria-label="Du besoin métier à l’usage quotidien">
+      <div class="flow" aria-label="D’un point de friction à un travail simplifié">
         <div class="flow__rail" aria-hidden="true"></div>
         <div class="flow__step flow__step--source">
           <span class="flow__number">01</span>
-          <div><strong>Besoins & flux</strong><span>Processus · données · contraintes</span></div>
+          <div><strong>Points de friction</strong><span>Doubles saisies · recherches · relances</span></div>
           <svg viewBox="0 0 70 44" aria-hidden="true"><path d="M4 8h19v10h20v18h23"/><circle cx="4" cy="8" r="3"/><circle cx="4" cy="30" r="3"/><circle cx="66" cy="36" r="3"/><path d="M4 30h17V18"/></svg>
         </div>
         <div class="flow__step flow__step--core">
           <span class="flow__number">02</span>
-          <div><strong>Outil adapté</strong><span>Conception · intégration · déploiement</span></div>
+          <div><strong>Intervention ciblée</strong><span>Application · automatisation · intégration</span></div>
           <svg viewBox="0 0 70 44" aria-hidden="true"><rect x="16" y="4" width="38" height="36"/><path d="M7 22h9M54 22h9M35 4V0M35 44v-4"/></svg>
         </div>
         <div class="flow__step flow__step--use">
           <span class="flow__number">03</span>
-          <div><strong>Usage quotidien</strong><span>Prise en main · suivi · évolution</span></div>
+          <div><strong>Travail simplifié</strong><span>Moins d’étapes · données accessibles</span></div>
           <svg viewBox="0 0 70 44" aria-hidden="true"><path d="M4 22h17l8-12 12 24 8-12h17"/><circle cx="4" cy="22" r="3"/><circle cx="66" cy="22" r="3"/></svg>
         </div>
       </div>
@@ -44,7 +44,7 @@ import { legalOffer } from '../data/legal-offer';
 
   <section id="expertises" class="section expertise">
     <div class="container">
-      <div class="section-heading"><p class="section-heading__label">Ce que nous construisons</p><h2>Le logiciel au service de votre fonctionnement.</h2></div>
+      <div class="section-heading"><p class="section-heading__label">Ce que nous construisons</p><h2>Trois façons d’améliorer votre fonctionnement.</h2></div>
       <div class="expertise__list">
         {competencies.map((item) => (
           <article class="expertise__item"><h3>{item.title}</h3><p>{item.description}</p></article>
@@ -72,10 +72,10 @@ import { legalOffer } from '../data/legal-offer';
         </div>
       </div>
       <div class="legal-offer__content">
-        <p class="section-heading__label">Solution pour cabinets d’avocats</p>
+        <p class="section-heading__label">Recherche dans les archives des cabinets</p>
         <h2>{legalOffer.headline}</h2>
         <p>{legalOffer.summary}</p>
-        <a class="text-link" href="/avocats/">Explorer la solution documentaire</a>
+        <a class="text-link" href="/avocats/">Découvrir l’offre pour avocats</a>
       </div>
     </div>
   </section>
@@ -93,9 +93,9 @@ import { legalOffer } from '../data/legal-offer';
 
   <section class="section credibility">
     <div class="container credibility__grid">
-      <div><p class="section-heading__label">Pourquoi Allgates</p><h2>L’expérience technique, traduite en solutions utiles.</h2></div>
+      <div><p class="section-heading__label">Pourquoi Allgates</p><h2>Une responsabilité technique de bout en bout.</h2></div>
       <div>
-        <p class="credibility__intro">Allgates mobilise une expertise senior en architecture logicielle, développement complet et intégration de systèmes pour prendre en charge les sujets métier exigeants.</p>
+        <p class="credibility__intro">Allgates prend en charge la conception, l’architecture, le développement et l’intégration afin que les décisions techniques restent cohérentes jusqu’à la mise en service.</p>
         <ul>{credibility.map((item) => <li>{item}</li>)}</ul>
       </div>
     </div>
