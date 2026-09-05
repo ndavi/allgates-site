@@ -7,8 +7,13 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
+    "test": "npm run test:contact && npm run test:e2e && npm run test:e2e:service",
+    "test:contact": "node --experimental-strip-types --test tests/contact.test.ts",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:service": "playwright test --config=playwright.contact.config.ts",
     "astro": "astro"
   },
   "dependencies": {
@@ -21,6 +26,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.4.1",
     "typescript": "^6.0.3"
   }
 }

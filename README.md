@@ -1,43 +1,55 @@
-# Astro Starter Kit: Minimal
+# Allgates
+
+Site de présentation Astro en français : accueil, offre documentaire pour les cabinets d’avocats et contact.
+
+## Développement
+
+Node.js 22.12 ou supérieur est nécessaire.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm ci
+npm run dev -- --background
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Utiliser l’adresse locale affichée par Astro. Le serveur reste en arrière-plan :
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run astro -- dev status
+npm run astro -- dev logs
+npm run astro -- dev stop
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Vérification
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+npm run check
+npx playwright install chromium
+npm test
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Les tests du contact vérifient la frontière avec le service de réception. Les tests Playwright parcourent le site compilé sur ordinateur et mobile. Ils utilisent des serveurs de prévisualisation temporaires sur les ports 4322 et 4323 et ne transmettent aucune demande réelle. Le second serveur utilise une compilation séparée dans `.contact-test-dist/` et intercepte les réponses du service externe pour vérifier les confirmations, les erreurs et les nouvelles tentatives.
 
-## 🧞 Commands
+```sh
+npm run test:contact
+npm run test:e2e
+npm run test:e2e:service
+npm run build
+```
 
-All commands are run from the root of the project, from a terminal:
+## Contenu et configuration
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- `src/data/site.ts` : marque, coordonnées, navigation et contenu général.
+- `src/data/legal-offer.ts` : sources, étapes, livrables et limites de l’offre avocats.
+- `src/layouts/SiteLayout.astro` et `src/styles/global.css` : éléments partagés et identité visuelle.
+- `docs/plan-site-allgates.md` : spécification d’origine.
+- `docs/contact-setup.md` : configuration et vérification du contact.
 
-## 👀 Want to learn more?
+L’adresse confirmée est **contact@allgates.net**. Sans service de formulaire configuré, le formulaire prépare un email dans la messagerie du visiteur ; celui-ci doit l’envoyer lui-même. Le site ne confirme jamais une réception dans ce mode.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Le traitement local de la chaîne documentaire a été confirmé pendant l’implémentation. Les formats exacts, les sources remises et les livrables sont précisés pour chaque mission. Aucun contenu de mission confidentielle n’est utilisé.
+
+## Publication
+
+Le projet Sites existant est conservé dans `.openai/hosting.json`. La sortie statique se trouve dans `dist/`. L’implémentation ne fixe pas l’hébergement public définitif.
+
+Avant une publication publique, renseigner le domaine définitif, l’identité juridique et les mentions adaptées au fonctionnement effectivement retenu. Pour recevoir les demandes directement depuis le site, configurer puis vérifier le service décrit dans `docs/contact-setup.md`.

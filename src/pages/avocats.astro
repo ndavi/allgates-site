@@ -1,0 +1,427 @@
+---
+import ContactCta from '../components/ContactCta.astro';
+import DocumentFlow from '../components/DocumentFlow.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { analysisLimits, deliverables, offerSteps, sourceTypes } from '../data/legal-offer';
+
+const title = 'Recherche documentaire pour cabinets d’avocats | Allgates';
+const description = 'Recherche et analyse de corpus documentaires : retrouvez les pièces, échanges et sources utiles à l’analyse de vos dossiers.';
+---
+
+<SiteLayout title={title} description={description}>
+		<section class="hero section">
+			<div class="container hero__grid">
+				<div class="hero__copy">
+					<p class="section-label">Recherche documentaire</p>
+					<h1>Retrouvez les pièces qui comptent dans vos dossiers.</h1>
+					<p class="hero__lead">Allgates aide votre cabinet à rassembler ses archives emails et documentaires dans un corpus consultable, afin de rechercher les contenus, rapprocher les fichiers et revenir aux sources.</p>
+					<a class="button" href="/contact/">Parlons de votre dossier</a>
+				</div>
+				<aside class="hero__aside" aria-label="Repères de l’offre">
+					<p>Une intervention se définit autour de vos sources, de vos questions et des conditions de consultation à retenir.</p>
+					<ul>
+						<li>Corpus à examiner</li>
+						<li>Résultats sourcés</li>
+						<li>Restitution à convenir</li>
+					</ul>
+				</aside>
+			</div>
+		</section>
+
+		<section class="section problem" aria-labelledby="need-title">
+			<div class="container split-layout">
+				<div>
+					<p class="section-label">Le besoin</p>
+					<h2 id="need-title">Des informations dispersées, une analyse à reconstruire.</h2>
+				</div>
+				<div class="prose">
+					<p>Dans un dossier volumineux, les échanges, pièces jointes et documents de travail se trouvent rarement au même endroit. L’enjeu consiste à retrouver ce qui éclaire une question précise, puis à examiner le résultat avec son contexte.</p>
+					<p>La démarche vise à rendre les éléments disponibles plus faciles à parcourir, sans substituer l’outil à l’analyse du cabinet.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section sources" aria-labelledby="sources-title">
+			<div class="container">
+				<div class="heading-row">
+					<div>
+						<p class="section-label">Les données de départ</p>
+						<h2 id="sources-title">Partir des sources que vous pouvez fournir.</h2>
+					</div>
+					<p>Les formats et leur état sont qualifiés avant l’intervention. Les archives et exports sont fournis par le cabinet : la prestation ne suppose pas de connexion directe à vos services.</p>
+				</div>
+				<div class="source-list">
+					{sourceTypes.map((source) => (
+						<article>
+							<h3>{source.title}</h3>
+							<p>{source.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section method" aria-labelledby="method-title">
+			<div class="container">
+				<p class="section-label">Le travail réalisé</p>
+				<h2 id="method-title">Un corpus préparé pour répondre à vos questions.</h2>
+				<div class="method-list">
+					{offerSteps.map((step, index) => (
+						<article>
+							<p class="step-number">{String(index + 1).padStart(2, '0')}</p>
+							<h3>{step.title}</h3>
+							<p>{step.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section traceability" aria-labelledby="traceability-title">
+			<div class="container traceability__grid">
+				<div>
+					<p class="section-label">Voir le chemin d’un résultat</p>
+					<h2 id="traceability-title">Chercher, repérer, puis revenir à la source.</h2>
+					<p class="traceability__text">La traçabilité donne au cabinet les repères nécessaires pour examiner un élément dans son contexte. Cet exemple fictif montre comment passer d’une question au document d’origine. Le format de restitution est défini avec le cabinet.</p>
+				</div>
+				<DocumentFlow />
+			</div>
+		</section>
+
+		<section class="section deliverables" aria-labelledby="deliverables-title">
+			<div class="container split-layout">
+				<div>
+					<p class="section-label">Ce que le cabinet reçoit</p>
+					<h2 id="deliverables-title">Des résultats pensés pour la consultation et l’analyse.</h2>
+				</div>
+				<div class="deliverable-list">
+					{deliverables.map((deliverable) => (
+						<article>
+							<h3>{deliverable.title}</h3>
+							<p>{deliverable.text}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section safeguards" aria-labelledby="safeguards-title">
+			<div class="container safeguards__grid">
+				<div>
+					<p class="section-label">Traitement et limites</p>
+					<h2 id="safeguards-title">Définir le cadre avant d’examiner les données.</h2>
+				</div>
+				<div>
+					<p class="safeguards__intro">Le traitement de la chaîne documentaire est réalisé localement. Les modalités précises de conservation, de consultation et les flux associés sont cadrés avec le cabinet avant l’intervention.</p>
+					<ul>
+						{analysisLimits.map((limit) => <li>{limit}</li>)}
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<div class="container contact-cta-wrap">
+			<ContactCta />
+		</div>
+</SiteLayout>
+
+<style>
+	.hero {
+		padding-top: clamp(4rem, 9vw, 8rem);
+		padding-bottom: clamp(4.5rem, 9vw, 8.5rem);
+		background: linear-gradient(120deg, #edf3ff 0%, var(--color-bg) 56%, #f8faff 100%);
+	}
+
+	.hero__grid,
+	.traceability__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.5fr);
+		gap: clamp(2rem, 7vw, 7rem);
+		align-items: end;
+	}
+
+	.safeguards__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+		gap: clamp(2rem, 7vw, 7rem);
+		align-items: start;
+	}
+
+	.hero__copy {
+		max-width: 49rem;
+	}
+
+	.section-label {
+		margin: 0 0 1rem;
+		color: var(--color-accent);
+		font-size: 0.82rem;
+		font-weight: 800;
+		letter-spacing: 0.035em;
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		text-wrap: pretty;
+	}
+
+	h1,
+	h2,
+	h3 {
+		color: var(--color-ink);
+	}
+
+	h1 {
+		max-width: 17ch;
+		margin: 0;
+		font-size: clamp(2.75rem, 5.5vw, 5rem);
+		line-height: 0.98;
+		letter-spacing: -0.065em;
+	}
+
+	h2 {
+		max-width: 20ch;
+		margin: 0;
+		font-size: clamp(2rem, 4vw, 3.75rem);
+		line-height: 1.04;
+		letter-spacing: -0.052em;
+	}
+
+	h3 {
+		margin: 0;
+		font-size: 1.12rem;
+		line-height: 1.25;
+		letter-spacing: -0.025em;
+	}
+
+	.hero__lead {
+		max-width: 42rem;
+		margin: 1.75rem 0 2rem;
+		color: var(--color-muted);
+		font-size: clamp(1.1rem, 2vw, 1.35rem);
+		line-height: 1.62;
+	}
+
+	.hero__aside {
+		padding: 1.5rem 0 0;
+		border-top: 3px solid var(--color-accent);
+		color: var(--color-muted);
+	}
+
+	.hero__aside p {
+		margin: 0;
+		font-size: 1.02rem;
+		line-height: 1.55;
+	}
+
+	.hero__aside ul {
+		margin: 1.5rem 0 0;
+		padding: 0;
+		list-style: none;
+		color: var(--color-ink);
+		font-weight: 700;
+	}
+
+	.hero__aside li {
+		padding: 0.72rem 0;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.split-layout {
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+		gap: clamp(2rem, 9vw, 9rem);
+	}
+
+	.prose {
+		max-width: 39rem;
+		color: var(--color-muted);
+		font-size: 1.08rem;
+		line-height: 1.65;
+	}
+
+	.prose p {
+		margin: 0 0 1rem;
+	}
+
+	.sources {
+		background: var(--color-surface);
+	}
+
+	.heading-row {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.45fr);
+		gap: 2rem;
+		align-items: end;
+	}
+
+	.heading-row > p {
+		max-width: 30rem;
+		margin: 0;
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.source-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem;
+		margin-top: clamp(2.5rem, 5vw, 4.5rem);
+	}
+
+	.source-list article,
+	.method-list article,
+	.deliverable-list article {
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--color-line);
+	}
+
+	.source-list p,
+	.method-list p:not(.step-number),
+	.deliverable-list p {
+		margin: 0.75rem 0 0;
+		color: var(--color-muted);
+		line-height: 1.58;
+	}
+
+	.method h2 {
+		margin-top: 0.35rem;
+	}
+
+	.method-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(1.5rem, 3.5vw, 4rem);
+		margin-top: clamp(3rem, 6vw, 5rem);
+	}
+
+	.step-number {
+		margin: 0 0 2rem;
+		color: var(--color-accent);
+		font-size: 0.82rem;
+		font-weight: 800;
+	}
+
+	.traceability {
+		background: #e5edfc;
+	}
+
+	.traceability__grid {
+		grid-template-columns: minmax(0, 0.67fr) minmax(24rem, 1fr);
+		align-items: center;
+	}
+
+	.traceability__text,
+	.safeguards__intro {
+		max-width: 38rem;
+		margin: 1.5rem 0 0;
+		color: var(--color-muted);
+		font-size: 1.06rem;
+		line-height: 1.62;
+	}
+
+	.deliverable-list {
+		display: grid;
+		gap: 1.25rem;
+	}
+
+	.safeguards {
+		background: var(--color-ink);
+	}
+
+	.safeguards h2,
+	.safeguards .section-label {
+		color: white;
+	}
+
+	.safeguards .section-label {
+		color: #b9cef9;
+	}
+
+	.safeguards__intro,
+	.safeguards li {
+		color: #d4ddea;
+	}
+
+	.safeguards ul {
+		margin: 1.75rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.safeguards li {
+		position: relative;
+		padding: 1rem 0 1rem 1.4rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		line-height: 1.55;
+	}
+
+	.safeguards li::before {
+		position: absolute;
+		left: 0;
+		top: 1.55rem;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 999px;
+		background: #82a7ff;
+		content: '';
+	}
+
+	.contact-cta-wrap {
+		padding-block: var(--section-space);
+	}
+
+	@media (max-width: 820px) {
+		.hero__grid,
+		.split-layout,
+		.heading-row,
+		.traceability__grid,
+		.safeguards__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero__aside {
+			max-width: 34rem;
+		}
+
+		.source-list,
+		.method-list {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.traceability__grid {
+			align-items: start;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.hero {
+			padding-top: 3rem;
+		}
+
+		h1 {
+			font-size: clamp(2.7rem, 14vw, 4rem);
+		}
+
+		h1,
+		h2,
+		h3,
+		.hero__lead,
+		.hero__aside,
+		.source-list p,
+		.method-list p,
+		.deliverable-list p,
+		.traceability__text,
+		.safeguards li {
+			overflow-wrap: anywhere;
+		}
+
+		.button {
+			max-width: 100%;
+			white-space: normal;
+			text-align: center;
+		}
+	}
+</style>
