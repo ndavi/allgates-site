@@ -1,17 +1,9 @@
----
-interface Props {
-  compact?: boolean;
-}
-
-const { compact = false } = Astro.props;
----
-
 <span class="logo" aria-label="Allgates">
   <svg class="logo__mark" viewBox="0 0 38 38" aria-hidden="true">
     <path d="M6 7.5h12v9H6zM20 21.5h12v9H20z" />
     <path d="M18 12h7v14H13" />
   </svg>
-  {!compact && <span class="logo__word">Allgates</span>}
+  <span class="logo__word">Allgates</span>
 </span>
 
 <style>
@@ -21,4 +13,3 @@ const { compact = false } = Astro.props;
   .logo__mark path:last-child { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: square; stroke-linejoin: miter; }
   .logo__word { font-size: 1.06rem; font-weight: 750; letter-spacing: -0.035em; }
 </style>
-

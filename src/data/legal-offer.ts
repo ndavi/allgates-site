@@ -1,3 +1,8 @@
+export const legalOffer = {
+	headline: 'Retrouvez les pièces qui comptent dans vos dossiers.',
+	summary: 'Allgates aide votre cabinet à rassembler ses archives emails et documentaires dans un corpus consultable, afin de rechercher les contenus, rapprocher les fichiers et revenir aux sources.',
+} as const;
+
 export const sourceTypes = [
 	{
 		title: 'Archives de messagerie',

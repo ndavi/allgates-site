@@ -60,3 +60,9 @@ export const credibility = [
   'La maîtrise de projets métier et de systèmes complexes',
   'Une société suisse, engagée dans un échange direct et précis',
 ] as const;
+
+export const contactCta = {
+  title: 'Votre besoin mérite un outil précis.',
+  description:
+    'Décrivez-nous votre contexte. Un premier échange permet de clarifier le besoin et de cadrer une intervention avant devis.',
+} as const;

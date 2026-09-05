@@ -2,9 +2,11 @@
 
 Le site fonctionne sans service externe configuré. Dans cet état, le bouton **Préparer mon email** ouvre la messagerie du visiteur avec un message adressé à `contact@allgates.net`. Le visiteur doit encore l’envoyer depuis sa messagerie et le site n’affiche aucune confirmation de réception.
 
-## Activer l’envoi direct
+## Option d’envoi direct avec Formspree
 
-L’intégration prévue utilise Formspree, un service adapté à un site Astro statique. Elle reste désactivée tant qu’un formulaire réel n’a pas été créé et relié à la bonne adresse destinataire.
+Un adaptateur Formspree est fourni comme option pour l’envoi direct depuis le site statique. Le choix du service de réception reste ouvert : aucun compte, formulaire ou destinataire n’a été créé chez ce fournisseur pendant l’implémentation, et aucune donnée ne lui est transmise tant que l’option n’est pas configurée.
+
+Si cette option est retenue, suivre les étapes ci-dessous. Un autre service nécessitera d’adapter le contrat de réception dans `src/lib/contact.ts` et la validation de son adresse dans `src/pages/contact.astro`. Les informations de confidentialité devront correspondre au service effectivement retenu avant son activation publique.
 
 1. Créer un formulaire dans Formspree et définir `contact@allgates.net` comme destinataire.
 2. Vérifier l’adresse destinataire depuis le compte Formspree.

@@ -2,7 +2,7 @@
 import ContactCta from '../components/ContactCta.astro';
 import DocumentFlow from '../components/DocumentFlow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { analysisLimits, deliverables, offerSteps, sourceTypes } from '../data/legal-offer';
+import { analysisLimits, deliverables, legalOffer, offerSteps, sourceTypes } from '../data/legal-offer';
 
 const title = 'Recherche documentaire pour cabinets d’avocats | Allgates';
 const description = 'Recherche et analyse de corpus documentaires : retrouvez les pièces, échanges et sources utiles à l’analyse de vos dossiers.';
@@ -13,8 +13,8 @@ const description = 'Recherche et analyse de corpus documentaires : retrouvez le
 			<div class="container hero__grid">
 				<div class="hero__copy">
 					<p class="section-label">Recherche documentaire</p>
-					<h1>Retrouvez les pièces qui comptent dans vos dossiers.</h1>
-					<p class="hero__lead">Allgates aide votre cabinet à rassembler ses archives emails et documentaires dans un corpus consultable, afin de rechercher les contenus, rapprocher les fichiers et revenir aux sources.</p>
+					<h1>{legalOffer.headline}</h1>
+					<p class="hero__lead">{legalOffer.summary}</p>
 					<a class="button" href="/contact/">Parlons de votre dossier</a>
 				</div>
 				<aside class="hero__aside" aria-label="Repères de l’offre">

@@ -127,6 +127,17 @@ const emailHref = `mailto:${contactEmail}`;
       const status = form.querySelector<HTMLElement>('#contact-status');
       if (!submitButton || !fields || !status) return;
 
+      const setSubmitting = (submitting: boolean) => {
+        form.dataset.busy = String(submitting);
+        fields.disabled = submitting;
+        submitButton.disabled = submitting;
+        if (submitting) {
+          submitButton.setAttribute('aria-busy', 'true');
+        } else {
+          submitButton.removeAttribute('aria-busy');
+        }
+      };
+
       const data = new FormData(form);
       const submission = {
         email: String(data.get('email') ?? ''),
@@ -136,10 +147,7 @@ const emailHref = `mailto:${contactEmail}`;
         website: String(data.get('_gotcha') ?? ''),
       };
 
-      form.dataset.busy = 'true';
-      fields.disabled = true;
-      submitButton.disabled = true;
-      submitButton.setAttribute('aria-busy', 'true');
+      setSubmitting(true);
       status.dataset.kind = 'pending';
       status.setAttribute('role', 'status');
 
@@ -168,10 +176,7 @@ const emailHref = `mailto:${contactEmail}`;
           status.textContent = 'Le message n’a pas été préparé. Veuillez réessayer.';
         }
 
-        form.dataset.busy = 'false';
-        fields.disabled = false;
-        submitButton.disabled = false;
-        submitButton.removeAttribute('aria-busy');
+        setSubmitting(false);
         return;
       }
 
@@ -190,10 +195,7 @@ const emailHref = `mailto:${contactEmail}`;
           : 'Votre demande n’a pas pu être confirmée. Votre saisie est conservée : réessayez ou écrivez-nous directement.';
       }
 
-      form.dataset.busy = 'false';
-      fields.disabled = false;
-      submitButton.disabled = false;
-      submitButton.removeAttribute('aria-busy');
+      setSubmitting(false);
     });
   }
 </script>

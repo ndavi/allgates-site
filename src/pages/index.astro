@@ -2,6 +2,7 @@
 import ContactCta from '../components/ContactCta.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { competencies, credibility, method } from '../data/site';
+import { legalOffer } from '../data/legal-offer';
 ---
 
 <SiteLayout
@@ -72,8 +73,8 @@ import { competencies, credibility, method } from '../data/site';
       </div>
       <div class="legal-offer__content">
         <p class="section-heading__label">Solution pour cabinets d’avocats</p>
-        <h2>Retrouvez les pièces qui comptent dans vos dossiers.</h2>
-        <p>Allgates rassemble vos archives emails et documentaires dans un corpus consultable. Recherchez dans les contenus, rapprochez fichiers et messages, reconstituez les échanges et revenez aux sources.</p>
+        <h2>{legalOffer.headline}</h2>
+        <p>{legalOffer.summary}</p>
         <a class="text-link" href="/avocats/">Explorer la solution documentaire</a>
       </div>
     </div>
@@ -128,12 +129,13 @@ import { competencies, credibility, method } from '../data/site';
   .legal-offer { background: #e8eef7; }
   .legal-offer__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(3rem, 9vw, 9rem); align-items: center; }
   .source-map { position: relative; display: grid; grid-template: 'mail lines process' auto 'file lines process' auto 'empty output output' auto / 1fr 3rem 1.25fr; gap: 1rem 0; align-items: center; min-height: 25rem; border: 1px solid #b8c5d6; background: color-mix(in srgb, var(--color-surface) 45%, transparent); padding: clamp(1.25rem, 3vw, 2.5rem); }
-  .source-map__input, .source-map__output { display: flex; align-items: center; gap: 0.75rem; border: 1px solid #a9b9cf; background: var(--color-surface); padding: 1rem; font-size: 0.82rem; font-weight: 680; }
+  .source-map__input, .source-map__output { display: flex; align-items: center; gap: 0.75rem; border: 1px solid #a9b9cf; background: var(--color-surface); padding: 1rem; font-size: 0.875rem; font-weight: 680; }
   .source-map__input svg, .source-map__output svg { width: 1.75rem; flex: none; fill: none; stroke: var(--color-accent); stroke-width: 1.4; }
   .source-map__input--mail { grid-area: mail; } .source-map__input--file { grid-area: file; }
   .source-map__process { grid-area: process; display: grid; min-height: 8rem; place-items: center; border: 1px solid #86a7f8; background: #dce7ff; padding: 1rem; text-align: center; }
   .source-map__process::after { position: absolute; right: calc(31% - 1px); bottom: calc(30% - 1px); width: 1px; height: 2.15rem; background: #89a1c3; content: ''; }
   .source-map__process span { max-width: 11ch; color: var(--color-ink); font-size: 0.88rem; font-weight: 730; }
+  .source-map span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; hyphens: auto; }
   .source-map__output { grid-area: output; justify-self: end; width: calc(100% - 1rem); border-color: var(--color-accent); }
   .source-map__lines { grid-area: lines; align-self: stretch; border-block: 1px solid #89a1c3; border-right: 1px solid #89a1c3; }
   .legal-offer__content h2 { max-width: 12ch; margin-top: 1rem; }
@@ -180,11 +182,12 @@ import { competencies, credibility, method } from '../data/site';
     .flow { padding-left: 0.5rem; }
     .flow__step { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.75rem; }
     .flow__step--core { margin-left: 0; }
-    .flow__number { font-size: 0.7rem; }
+    .flow__number { font-size: 0.75rem; }
     .source-map { display: flex; min-height: 0; flex-direction: column; align-items: stretch; gap: 0.75rem; }
-    .source-map__input, .source-map__output { width: 100%; align-items: center; flex-direction: row; }
+    .source-map__input, .source-map__output { width: 100%; align-items: flex-start; flex-direction: column; }
     .source-map__lines { display: none; }
-    .source-map__process { min-height: 0; padding-block: 1.25rem; }
+    .source-map__process { min-height: 0; padding: 0.75rem; }
+    .source-map__process span { width: 100%; max-width: none; }
     .source-map__process::after { display: none; }
     .method li { grid-template-columns: 1fr; }
   }
