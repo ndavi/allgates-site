@@ -142,6 +142,37 @@ test('le contact et la navigation restent accessibles sans JavaScript sur mobile
   await context.close();
 });
 
+test.describe('hiérarchie typographique', () => {
+  for (const route of publicRoutes) {
+    test(`${route} conserve des titres lisibles sans couper les mots`, async ({ page }) => {
+      await page.goto(route);
+
+      const headings = await page.locator('main h1, main h2').evaluateAll((elements) =>
+        elements.map((element) => {
+          const htmlElement = element as HTMLElement;
+          const style = getComputedStyle(htmlElement);
+          return {
+            level: htmlElement.tagName.toLowerCase(),
+            text: htmlElement.innerText,
+            fontSize: Number.parseFloat(style.fontSize),
+            hyphens: style.hyphens,
+            fits: htmlElement.scrollWidth <= htmlElement.clientWidth + 1,
+          };
+        }),
+      );
+
+      for (const heading of headings) {
+        expect(heading.hyphens, `${heading.level} « ${heading.text} » ne doit pas couper automatiquement les mots`).toBe('none');
+        expect(heading.fits, `${heading.level} « ${heading.text} » doit tenir dans son conteneur`).toBe(true);
+        expect(
+          heading.fontSize,
+          `${heading.level} « ${heading.text} » utilise une taille trop dominante`,
+        ).toBeLessThanOrEqual(heading.level === 'h1' ? 72 : 56);
+      }
+    });
+  }
+});
+
 test.describe('lecture à 320px et texte agrandi', () => {
   test.use({ viewport: { width: 320, height: 720 } });
 

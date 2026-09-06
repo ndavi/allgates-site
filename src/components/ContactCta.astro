@@ -5,7 +5,7 @@ import { contactCta } from '../data/site';
 <section class="contact-cta" aria-labelledby="contact-cta-title">
   <div class="contact-cta__signal" aria-hidden="true"><span></span><span></span><span></span></div>
   <div><h2 id="contact-cta-title">{contactCta.title}</h2><p>{contactCta.description}</p></div>
-  <a class="button button--light" href="/contact/">Décrire votre besoin</a>
+  <a class="button button--light" href="/contact/">Présenter votre besoin</a>
 </section>
 
 <style>
@@ -13,8 +13,8 @@ import { contactCta } from '../data/site';
   .contact-cta__signal { grid-column: 1 / -1; display: flex; align-items: center; gap: 0.5rem; }
   .contact-cta__signal span { width: 0.48rem; height: 0.48rem; background: #7fa5ff; }
   .contact-cta__signal span:nth-child(2) { opacity: 0.65; } .contact-cta__signal span:nth-child(3) { opacity: 0.35; }
-  h2 { max-width: 14ch; margin: 0; color: white; font-size: clamp(2rem, 4.5vw, 3.8rem); }
-  p { max-width: 50rem; margin: 1.25rem 0 0; color: #c2cfdf; }
+  h2 { max-width: 15ch; margin: 0; color: white; font-size: clamp(2rem, 4vw, 3.5rem); }
+  p { max-width: 50rem; margin: 1.25rem 0 0; color: #c2cfdf; overflow-wrap: anywhere; }
   .button--light { flex: none; background: white; color: var(--color-ink); }
   .button--light:hover { background: #dbe6ff; }
   @media (max-width: 760px) {

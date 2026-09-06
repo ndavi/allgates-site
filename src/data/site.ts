@@ -5,7 +5,7 @@ export const site = {
   legalName: 'Allgates Sàrl',
   descriptor: 'Ingénierie logicielle en Suisse',
   description:
-    'Allgates conçoit des applications métier, des automatisations et des intégrations de l’IA adaptées aux petites structures.',
+    'Allgates accompagne les entreprises et cabinets d’avocats de Suisse romande avec du logiciel sur mesure, de l’automatisation, de l’audit et du conseil IT.',
   contactEmail,
 } as const;
 
@@ -25,53 +25,59 @@ export const navigation = [
 
 export const competencies = [
   {
-    title: 'Applications métier',
+    title: 'Logiciels sur mesure',
     description:
-      'Concevoir un outil autour de vos processus, de vos données et des personnes qui l’utilisent.',
+      'Concevoir un outil adapté à vos processus, à vos données et aux personnes qui l’utilisent au quotidien.',
   },
   {
-    title: 'Automatisation et IA',
+    title: 'Automatisation ciblée',
     description:
-      'Relier les bons systèmes, automatiser les tâches répétitives et intégrer l’IA là où elle apporte une aide concrète.',
+      'Relier les systèmes existants et automatiser les recherches, saisies, contrôles ou relances qui ralentissent le travail. L’IA peut être intégrée en arrière-plan lorsqu’elle apporte une aide concrète.',
   },
   {
-    title: 'Mise en service et évolution',
+    title: 'Recherche d’informations',
     description:
-      'Déployer un logiciel utilisable, accompagner sa prise en main et le faire évoluer avec votre activité.',
+      'Rassembler des données dispersées et construire un accès rapide aux informations utiles à une décision ou à un dossier.',
+  },
+  {
+    title: 'Audit et conseil IT',
+    description:
+      'Clarifier une situation technique, identifier les risques et définir une trajectoire réaliste avant d’investir dans une solution.',
   },
 ] as const;
 
 export const method = [
   {
-    title: 'Comprendre le travail réel',
+    title: 'Premier échange gratuit',
     description:
-      'Nous partons de vos opérations, de vos contraintes et des outils déjà en place.',
+      'Nous échangeons sur votre fonctionnement actuel, la difficulté rencontrée et le résultat que vous recherchez.',
   },
   {
-    title: 'Délimiter l’intervention',
+    title: 'Diagnostic et proposition',
     description:
-      'Le périmètre, les données mobilisées et le livrable sont définis avant engagement.',
+      'Lorsque le besoin le justifie, un diagnostic permet de préciser le périmètre, l’intervention et le devis.',
   },
   {
-    title: 'Livrer dans votre environnement',
+    title: 'Réalisation et mise en service',
     description:
-      'La solution est mise en service avec les intégrations utiles et une prise en main claire.',
+      'La solution est construite avec les intégrations utiles, puis mise en service dans votre environnement.',
   },
   {
-    title: 'Faire évoluer l’outil',
+    title: 'Suivi et évolution',
     description:
-      'Les retours d’usage guident les ajustements et les développements suivants.',
+      'Les retours d’usage guident les ajustements et les évolutions qui apportent une valeur concrète.',
   },
 ] as const;
 
 export const credibility = [
-  'Un interlocuteur technique senior, du cadrage aux évolutions',
-  'Architecture, développement et mise en service réunis dans une même intervention',
+  'Plus de dix ans d’expérience en développement logiciel',
+  'Vingt ans d’expérience dans des environnements de service exigeants',
+  'Des parcours professionnels comprenant notamment des missions pluriannuelles pour EDF et l’ONU',
   'Allgates Sàrl, société établie dans le canton de Vaud',
 ] as const;
 
 export const contactCta = {
-  title: 'Partons du problème à résoudre.',
+  title: 'Échangeons sur ce que vous voulez améliorer.',
   description:
-    'Décrivez-nous votre contexte et le résultat recherché. Nous vous répondrons pour préciser la prochaine étape.',
+    'Un premier échange gratuit permet de comprendre votre besoin et de déterminer si une intervention Allgates est pertinente.',
 } as const;

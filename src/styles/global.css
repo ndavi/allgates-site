@@ -20,9 +20,9 @@ html { scroll-behavior: smooth; background: var(--color-bg); }
 body { min-width: 0; margin: 0; background: var(--color-bg); color: var(--color-ink); font-family: inherit; font-size: 1rem; line-height: 1.65; }
 button, input, textarea, select { font: inherit; }
 img, svg { display: block; max-width: 100%; }
-h1, h2, h3 { min-width: 0; margin: 0; color: var(--color-ink); font-weight: 680; letter-spacing: -0.045em; line-height: 1.05; overflow-wrap: anywhere; hyphens: auto; }
-h1 { font-size: clamp(3rem, 7.3vw, 6.7rem); }
-h2 { font-size: clamp(2.25rem, 5vw, 4.5rem); }
+h1, h2, h3 { min-width: 0; margin: 0; color: var(--color-ink); font-weight: 680; letter-spacing: -0.045em; line-height: 1.08; overflow-wrap: normal; hyphens: none; word-break: normal; }
+h1 { font-size: clamp(2.75rem, 5.5vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.55rem); letter-spacing: -0.025em; }
 p { margin: 0; }
 a { color: inherit; overflow-wrap: anywhere; }
@@ -44,8 +44,9 @@ main, section, header, footer, nav, div, article, form, fieldset { min-width: 0;
 @media (max-width: 700px) { .section-heading { grid-template-columns: 1fr; gap: 1rem; } }
 @media (max-width: 400px) {
   :root { --page-gutter: clamp(0.75rem, 4vw, 1.25rem); }
-  h1 { font-size: calc(1rem + 6vw) !important; }
-  h2 { font-size: calc(0.9rem + 5vw) !important; }
+  h1, h2, h3 { overflow-wrap: anywhere; }
+  h1 { font-size: calc(1rem + 5vw) !important; }
+  h2 { font-size: calc(0.9rem + 4vw) !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -1,98 +1,86 @@
 ---
 import ContactCta from '../components/ContactCta.astro';
-import DocumentFlow from '../components/DocumentFlow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { analysisLimits, legalOffer, offerSteps, sourceTypes } from '../data/legal-offer';
+import { interventionFramework, legalOffer, offerSteps, sourceTypes } from '../data/legal-offer';
 
 const title = 'Recherche dans les archives des cabinets d’avocats | Allgates';
-const description = 'Allgates prépare les archives fournies par votre cabinet, recherche les échanges et pièces utiles, puis restitue des résultats liés à leurs sources.';
+const description = 'Allgates aide les cabinets d’avocats à retrouver rapidement les informations utiles dans leurs archives de messagerie et leurs documents.';
 ---
 
 <SiteLayout title={title} description={description}>
-		<section class="hero section">
-			<div class="container hero__grid">
-				<div class="hero__copy">
-					<p class="section-label">Recherche documentaire</p>
-					<h1>{legalOffer.headline}</h1>
-					<p class="hero__lead">{legalOffer.summary}</p>
-					<a class="button" href="/contact/">Parlons de votre dossier</a>
-				</div>
-				<aside class="hero__aside" aria-label="Exemples de questions traitées">
-					<p>La prestation répond à des questions ciblées dans un ensemble d’archives défini avec le cabinet.</p>
-					<ul>
-						<li>Retrouver un échange ou une clause</li>
-						<li>Relier un message à ses pièces jointes</li>
-						<li>Reconstituer une chronologie documentaire</li>
-					</ul>
-				</aside>
+	<section class="hero section">
+		<div class="container hero__grid">
+			<div class="hero__copy">
+				<p class="section-label">Recherche dans les archives juridiques</p>
+				<h1>{legalOffer.headline}</h1>
+				<p class="hero__lead">Lorsque les messages, pièces jointes et documents s’accumulent, Allgates prépare les archives remises par le cabinet afin d’y mener des recherches précises et de restituer les éléments utiles avec leurs sources.</p>
+				<a class="button" href="/contact/">Parlons de votre dossier</a>
 			</div>
-		</section>
-
-		<section class="section sources" aria-labelledby="sources-title">
-			<div class="container">
-				<div class="heading-row">
-					<div>
-						<p class="section-label">Les sources prises en charge</p>
-						<h2 id="sources-title">À partir des exports que vous fournissez.</h2>
-					</div>
-					<p>Le traitement commence par une copie des données définies au cadrage. Aucune connexion directe à votre messagerie ou à vos espaces documentaires n’est nécessaire.</p>
-				</div>
-				<div class="source-list">
-					{sourceTypes.map((source) => (
-						<article>
-							<h3>{source.title}</h3>
-							<p>{source.text}</p>
-						</article>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section class="section method" aria-labelledby="method-title">
-			<div class="container">
-				<p class="section-label">Le déroulement et les livrables</p>
-				<h2 id="method-title">Trois étapes, avec un résultat à chaque étape.</h2>
-				<div class="method-list">
-					{offerSteps.map((step, index) => (
-						<article>
-							<p class="step-number">{String(index + 1).padStart(2, '0')}</p>
-							<h3>{step.title}</h3>
-							<p>{step.text}</p>
-						</article>
-					))}
-				</div>
-			</div>
-		</section>
-
-		<section class="section traceability" aria-labelledby="traceability-title">
-			<div class="container traceability__grid">
-				<div>
-					<p class="section-label">Voir le chemin d’un résultat</p>
-					<h2 id="traceability-title">Chercher, repérer, puis revenir à la source.</h2>
-					<p class="traceability__text">Chaque résultat conserve les repères nécessaires pour retrouver le message ou le document d’origine et l’examiner dans son contexte.</p>
-				</div>
-				<DocumentFlow />
-			</div>
-		</section>
-
-		<section class="section safeguards" aria-labelledby="safeguards-title">
-			<div class="container safeguards__grid">
-				<div>
-					<p class="section-label">Données et limites</p>
-					<h2 id="safeguards-title">Un cadre défini avant le traitement.</h2>
-				</div>
-				<div>
-					<p class="safeguards__intro">Le traitement est réalisé localement, à partir des exports remis par le cabinet et sans connexion directe à ses services. L’environnement utilisé, les accès et la durée de conservation sont précisés avant l’intervention.</p>
-					<ul>
-						{analysisLimits.map((limit) => <li>{limit}</li>)}
-					</ul>
-				</div>
-			</div>
-		</section>
-
-		<div class="container contact-cta-wrap">
-			<ContactCta />
+			<aside class="hero__aside" aria-label="Exemples de questions traitées">
+				<p>Une intervention peut notamment vous aider à :</p>
+				<ul>
+					<li>Retrouver un échange, une clause ou une version</li>
+					<li>Relier un message à ses pièces jointes</li>
+					<li>Reconstituer rapidement une chronologie</li>
+				</ul>
+			</aside>
 		</div>
+	</section>
+
+	<section class="section sources" aria-labelledby="sources-title">
+		<div class="container">
+			<div class="heading-row">
+				<div>
+					<p class="section-label">Les archives de départ</p>
+					<h2 id="sources-title">Des sources hétérogènes, réunies pour la recherche.</h2>
+				</div>
+				<p>Les principaux formats de messagerie, de documents et d’exports documentaires peuvent être pris en charge. Leur exploitabilité est vérifiée lors du diagnostic.</p>
+			</div>
+			<div class="source-list">
+				{sourceTypes.map((source) => (
+					<article>
+						<h3>{source.title}</h3>
+						<p>{source.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section method" aria-labelledby="method-title">
+		<div class="container">
+			<p class="section-label">Le déroulement</p>
+			<h2 id="method-title">Une prestation construite autour de votre question.</h2>
+			<div class="method-list">
+				{offerSteps.map((step, index) => (
+					<article>
+						<p class="step-number">{String(index + 1).padStart(2, '0')}</p>
+						<h3>{step.title}</h3>
+						<p>{step.text}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section safeguards" aria-labelledby="safeguards-title">
+		<div class="container safeguards__grid">
+			<div>
+				<p class="section-label">Avant l’intervention</p>
+				<h2 id="safeguards-title">Un périmètre clair avant de commencer.</h2>
+			</div>
+			<div>
+				<p class="safeguards__intro">Le diagnostic permet de vérifier que les archives disponibles, la question posée et la restitution attendue forment un ensemble cohérent.</p>
+				<ul>
+					{interventionFramework.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<div class="container contact-cta-wrap">
+		<ContactCta />
+	</div>
 </SiteLayout>
 
 <style>
@@ -102,8 +90,7 @@ const description = 'Allgates prépare les archives fournies par votre cabinet, 
 		background: linear-gradient(120deg, #edf3ff 0%, var(--color-bg) 56%, #f8faff 100%);
 	}
 
-	.hero__grid,
-	.traceability__grid {
+	.hero__grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.5fr);
 		gap: clamp(2rem, 7vw, 7rem);
@@ -145,16 +132,16 @@ const description = 'Allgates prépare les archives fournies par votre cabinet, 
 	h1 {
 		max-width: 17ch;
 		margin: 0;
-		font-size: clamp(2.75rem, 5.5vw, 5rem);
-		line-height: 0.98;
+		font-size: clamp(2.65rem, 5vw, 4.5rem);
+		line-height: 1.04;
 		letter-spacing: -0.065em;
 	}
 
 	h2 {
 		max-width: 20ch;
 		margin: 0;
-		font-size: clamp(2rem, 4vw, 3.75rem);
-		line-height: 1.04;
+		font-size: clamp(2rem, 3.75vw, 3.5rem);
+		line-height: 1.08;
 		letter-spacing: -0.052em;
 	}
 
@@ -254,16 +241,6 @@ const description = 'Allgates prépare les archives fournies par votre cabinet, 
 		font-weight: 800;
 	}
 
-	.traceability {
-		background: #e5edfc;
-	}
-
-	.traceability__grid {
-		grid-template-columns: minmax(0, 0.67fr) minmax(24rem, 1fr);
-		align-items: center;
-	}
-
-	.traceability__text,
 	.safeguards__intro {
 		max-width: 38rem;
 		margin: 1.5rem 0 0;
@@ -321,7 +298,6 @@ const description = 'Allgates prépare les archives fournies par votre cabinet, 
 	@media (max-width: 820px) {
 		.hero__grid,
 		.heading-row,
-		.traceability__grid,
 		.safeguards__grid {
 			grid-template-columns: 1fr;
 		}
@@ -335,10 +311,6 @@ const description = 'Allgates prépare les archives fournies par votre cabinet, 
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
 		}
-
-		.traceability__grid {
-			align-items: start;
-		}
 	}
 
 	@media (max-width: 480px) {
@@ -346,19 +318,14 @@ const description = 'Allgates prépare les archives fournies par votre cabinet, 
 			padding-top: 3rem;
 		}
 
-		h1 {
-			font-size: clamp(2.7rem, 14vw, 4rem);
-		}
-
 		h1,
 		h2,
 		h3,
 		.hero__lead,
-		.hero__aside,
-		.source-list p,
-		.method-list p,
-		.traceability__text,
-		.safeguards li {
+			.hero__aside,
+			.source-list p,
+			.method-list p,
+			.safeguards li {
 			overflow-wrap: anywhere;
 		}
 

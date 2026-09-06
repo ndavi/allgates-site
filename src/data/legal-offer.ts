@@ -1,40 +1,39 @@
 export const legalOffer = {
-	headline: 'Retrouvez les échanges et pièces utiles dans vos archives.',
-	summary: 'Allgates prépare et indexe les exports fournis par votre cabinet, mène les recherches convenues et restitue chaque résultat avec un lien vers sa source.',
+	headline: 'Retrouvez rapidement les informations utiles dans vos archives.',
 } as const;
 
 export const sourceTypes = [
 	{
-		title: 'Archives de messagerie',
-		text: 'Fichiers PST et autres exports de messagerie compatibles avec le périmètre convenu.',
+		title: 'Messageries',
+		text: 'Fichiers PST et autres exports de messagerie, avec leurs messages et pièces jointes.',
 	},
 	{
-		title: 'Exports documentaires',
-		text: 'Exports SharePoint ou OneDrive, avec l’arborescence et les métadonnées disponibles.',
+		title: 'Documents',
+		text: 'PDF, documents bureautiques, images et dossiers transmis avec leur contexte.',
 	},
 	{
-		title: 'Pièces et dossiers',
-		text: 'Documents transmis avec les éléments de contexte nécessaires à leur interprétation.',
+		title: 'Espaces documentaires',
+		text: 'Exports SharePoint, OneDrive ou d’autres espaces, avec l’arborescence et les métadonnées disponibles.',
 	},
 ] as const;
 
 export const offerSteps = [
 	{
-		title: 'Préparer les données',
-		text: 'Qualifier les formats, extraire les contenus, repérer les doublons, appliquer l’OCR lorsque nécessaire et dresser un état du corpus.',
+		title: 'Diagnostiquer le corpus',
+		text: 'Examiner les formats, le volume disponible et les questions à traiter afin de définir une intervention adaptée.',
 	},
 	{
-		title: 'Répondre à une question précise',
-		text: 'Rechercher dans les contenus, relier les messages à leurs pièces jointes et reconstituer les échanges utiles à l’analyse.',
+		title: 'Préparer et rechercher',
+		text: 'Extraire et indexer les contenus, appliquer l’OCR lorsque nécessaire, repérer les doublons et rapprocher les éléments utiles.',
 	},
 	{
-		title: 'Remettre des résultats vérifiables',
-		text: 'Fournir les résultats avec leur origine consultable, sous la forme convenue au cadrage : rapport, corpus consultable ou outil de recherche.',
+		title: 'Restituer dans le format utile',
+		text: 'Remettre une synthèse, un rapport, un corpus consultable ou un outil de recherche, selon ce qui a été défini au diagnostic.',
 	},
 ] as const;
 
-export const analysisLimits = [
-	'Les recherches portent sur les éléments présents dans les archives fournies ; une suppression définitive ne peut pas être récupérée par défaut.',
-	'Les empreintes, métadonnées et horodatages sont des indices à interpréter dans leur contexte ; ils ne suffisent pas seuls à établir un fait.',
-	'Les résultats restent liés à leurs sources ; leur portée juridique relève de l’analyse du cabinet et du contexte du dossier.',
+export const interventionFramework = [
+	'Les formats, le volume et les questions à traiter sont vérifiés lors du diagnostic.',
+	'La forme de la restitution et les moyens de revenir aux sources sont convenus avant l’intervention.',
+	'Les accès et les modalités de traitement sont définis avec le cabinet.',
 ] as const;

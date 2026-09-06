@@ -10,23 +10,23 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
 
 <SiteLayout
   title="Contact | Allgates"
-  description="Décrivez à Allgates le fonctionnement actuel et le résultat recherché pour préparer un premier échange."
+  description="Présentez votre besoin à Allgates et organisez un premier échange gratuit."
 >
   <section class="section contact-intro">
     <div class="container contact-intro__grid">
       <div class="contact-intro__copy">
-        <p class="eyebrow">Prendre contact</p>
-        <h1>Parlons de votre besoin.</h1>
+        <p class="eyebrow">Premier échange gratuit</p>
+        <h1>Parlons de ce que vous souhaitez améliorer.</h1>
         <p class="lead">
-          Décrivez en quelques lignes le fonctionnement actuel et ce que vous souhaitez améliorer. Nous vous répondrons pour préciser la suite.
+          Présentez-nous simplement votre situation. Nous vérifierons ensemble si un logiciel, une automatisation, un audit ou un accompagnement peut répondre à votre besoin.
         </p>
       </div>
 
       <aside class="contact-note" aria-labelledby="before-writing-title">
-        <p class="contact-note__label">Premier échange</p>
-        <h2 id="before-writing-title">Restez au niveau du besoin</h2>
+        <p class="contact-note__label">Après votre message</p>
+        <h2 id="before-writing-title">Un parcours sans engagement</h2>
         <p>
-          N’envoyez ni pièce de dossier, ni archive, ni donnée confidentielle depuis ce formulaire. Nous conviendrons ensemble d’un canal adapté si des éléments doivent être examinés.
+          Nous organisons un premier échange gratuit. Si une intervention est pertinente, un diagnostic permet ensuite de préciser le périmètre et d’établir un devis.
         </p>
       </aside>
     </div>
@@ -39,20 +39,24 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
       </div>
 
       <div class="contact-context">
-        <p class="eyebrow">Pour commencer</p>
-        <h2 id="contact-form-title">Deux informations suffisent</h2>
+        <p class="eyebrow">Votre message</p>
+        <h2 id="contact-form-title">Pour préparer l’échange</h2>
         <p>
-          Nous préciserons ensuite les contraintes, le périmètre et la prochaine étape avec vous.
+          Quelques lignes suffisent pour préparer le premier échange.
         </p>
 
         <ol class="contact-steps">
           <li>
             <span>01</span>
-            <div><strong>Votre contexte</strong><p>La structure concernée, le travail actuel et la difficulté rencontrée.</p></div>
+            <div><strong>La situation actuelle</strong><p>Le travail concerné et les outils utilisés aujourd’hui.</p></div>
           </li>
           <li>
             <span>02</span>
-            <div><strong>Le résultat recherché</strong><p>Ce que vous aimeriez simplifier, automatiser ou rendre possible.</p></div>
+            <div><strong>La difficulté</strong><p>Ce qui vous ralentit, vous limite ou manque de clarté.</p></div>
+          </li>
+          <li>
+            <span>03</span>
+            <div><strong>Le résultat recherché</strong><p>Ce que vous souhaitez simplifier, accélérer ou rendre possible.</p></div>
           </li>
         </ol>
       </div>
@@ -80,9 +84,9 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
   h1 {
     max-width: 18ch;
     margin: 0.25rem 0 1.25rem;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.5rem, 4.5vw, 4.25rem);
     letter-spacing: -0.045em;
-    line-height: 1;
+    line-height: 1.06;
     overflow-wrap: anywhere;
   }
 
