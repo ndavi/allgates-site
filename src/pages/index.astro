@@ -15,8 +15,16 @@ import { competencies, credibility, method } from '../data/site';
         <h1>Des outils adaptés à votre manière de travailler.</h1>
         <p class="hero__intro">Allgates accompagne en Suisse romande les dirigeants, responsables opérationnels et cabinets d’avocats qui veulent retrouver plus facilement leurs informations, traiter davantage de volume ou disposer d’outils mieux adaptés à leur activité.</p>
         <div class="hero__actions">
-          <a class="button" href="/contact/">Parler de votre besoin</a>
-          <a class="button button--secondary" href="#expertises">Découvrir nos expertises</a>
+          <a class="hero-cta" href="/contact/">
+            <span>
+              <strong>Parlez de votre besoin</strong>
+              <small>Premier échange gratuit</small>
+            </span>
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M5.5 7.5h21v14h-12l-6 4v-4h-3z" />
+              <path d="M10 12h12M10 17h8" />
+            </svg>
+          </a>
         </div>
       </div>
 
@@ -110,6 +118,12 @@ import { competencies, credibility, method } from '../data/site';
   .hero__kicker { margin-bottom: 1.5rem; color: var(--color-accent); font-size: 0.88rem; font-weight: 740; }
   .hero__intro { max-width: 43rem; margin-top: 2rem; color: var(--color-muted); font-size: clamp(1.06rem, 2vw, 1.25rem); }
   .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
+  :global(.hero-cta) { display: inline-flex; width: min(100%, 24rem); min-height: 5rem; align-items: center; justify-content: space-between; gap: 2rem; border: 1px solid var(--color-ink); border-radius: 0.15rem; background: var(--color-ink); box-shadow: 0.45rem 0.45rem 0 var(--color-accent); color: white; padding: 0.9rem 1rem 0.9rem 1.25rem; text-decoration: none; transition: box-shadow 160ms ease, transform 160ms ease; }
+  :global(.hero-cta strong), :global(.hero-cta small) { display: block; }
+  :global(.hero-cta strong) { font-size: 1.02rem; font-weight: 760; line-height: 1.25; }
+  :global(.hero-cta small) { margin-top: 0.3rem; color: #b9c7d8; font-size: 0.78rem; font-weight: 620; line-height: 1.3; }
+  :global(.hero-cta svg) { width: 2.5rem; flex: none; fill: none; stroke: #7fa5ff; stroke-linecap: square; stroke-linejoin: miter; stroke-width: 1.5; }
+  :global(.hero-cta:hover) { box-shadow: 0.2rem 0.2rem 0 var(--color-accent); transform: translate(0.25rem, 0.25rem); }
   .flow { position: relative; display: grid; min-width: 0; gap: 0.75rem; padding-left: 1.5rem; }
   .flow__rail { position: absolute; top: 12%; bottom: 12%; left: 0; width: 1px; background: var(--color-accent); }
   .flow__rail::before, .flow__rail::after { position: absolute; left: -3px; width: 7px; height: 7px; background: var(--color-accent); content: ''; }
@@ -176,7 +190,7 @@ import { competencies, credibility, method } from '../data/site';
   @media (max-width: 400px) {
     .hero { padding-block: 2.5rem 4rem; }
     .hero__actions { align-items: stretch; flex-direction: column; }
-    .hero__actions .button { width: 100%; }
+    :global(.hero-cta) { width: calc(100% - 0.45rem); gap: 1rem; }
     .flow { padding-left: 0.5rem; }
     .flow__step { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.75rem; }
     .flow__step--core { margin-left: 0; }
