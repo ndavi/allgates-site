@@ -62,7 +62,7 @@ export const credibility = [
 ] as const;
 
 export const contactCta = {
-  title: 'Comment commencer ?',
+  title: 'Parlons de votre dossier.',
   description:
     'Un premier échange permet de comprendre votre besoin et de convenir du travail à réaliser.',
 } as const;
