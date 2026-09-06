@@ -67,7 +67,8 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
 
 <style>
   .contact-intro {
-    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+    padding-top: var(--hero-top-space);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
   }
 
   .contact-intro__grid {
@@ -125,7 +126,7 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
   }
 
   .contact-content {
-    padding-top: 3rem;
+    padding-top: var(--section-space);
     border-top: 1px solid var(--color-line);
     background: linear-gradient(180deg, rgb(216 225 237 / 28%), transparent 22rem);
   }

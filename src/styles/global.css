@@ -8,6 +8,7 @@
   --color-accent: #245beb;
   --color-line: #d8e1ed;
   --page-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --hero-top-space: clamp(1.5rem, 2vw, 2.5rem);
   --section-space: clamp(2rem, 3vw, 3.5rem);
   color-scheme: light;
   font-family: 'Manrope Variable', 'Manrope', sans-serif;
