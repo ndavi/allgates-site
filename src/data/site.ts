@@ -3,9 +3,9 @@ export const contactEmail = 'contact@allgates.net';
 export const site = {
   name: 'Allgates',
   legalName: 'Allgates Sàrl',
-  descriptor: 'Ingénierie logicielle en Suisse',
+  descriptor: 'Recherche documentaire pour cabinets d’avocats',
   description:
-    'Allgates accompagne les entreprises et cabinets d’avocats de Suisse romande avec du logiciel sur mesure, de l’automatisation, de l’audit et du conseil IT.',
+    'Allgates extrait et regroupe les informations utiles aux cabinets d’avocats de Suisse romande dans une application avec un accès aux documents et échanges d’origine.',
   contactEmail,
 } as const;
 
@@ -19,65 +19,59 @@ export const legalCompany = {
 
 export const navigation = [
   { label: 'Accueil', href: '/' },
-  { label: 'Archives pour avocats', href: '/avocats/' },
-  { label: 'Contact', href: '/contact/' },
+  { label: 'La plateforme', href: '/avocats/' },
+  { label: 'Contactez-nous', href: '/contact/' },
 ] as const;
 
-export const competencies = [
+export const benefits = [
   {
-    title: 'Logiciels sur mesure',
+    title: 'Consulter les informations regroupées',
     description:
-      'Concevoir un outil adapté à vos processus, à vos données et aux personnes qui l’utilisent au quotidien.',
+      'Les informations que vous nous demandez sont extraites de vos archives et regroupées dans votre application.',
   },
   {
-    title: 'Automatisation ciblée',
+    title: 'Consulter les échanges associés',
     description:
-      'Relier les systèmes existants et automatiser les recherches, saisies, contrôles ou relances qui ralentissent le travail. L’IA peut être intégrée en arrière-plan lorsqu’elle apporte une aide concrète.',
+      'Consultez les emails liés à une pièce, leurs dates et leurs auteurs lorsque ces informations figurent dans les archives.',
   },
   {
-    title: 'Recherche d’informations',
+    title: 'Accéder aux documents d’origine',
     description:
-      'Rassembler des données dispersées et construire un accès rapide aux informations utiles à une décision ou à un dossier.',
-  },
-  {
-    title: 'Audit et conseil IT',
-    description:
-      'Clarifier une situation technique, identifier les risques et définir une trajectoire réaliste avant d’investir dans une solution.',
+      'Chaque résultat renvoie au document ou à l’échange dont il provient. Vous pouvez ouvrir la source pour vérifier son contenu.',
   },
 ] as const;
 
 export const method = [
   {
-    title: 'Premier échange gratuit',
+    title: 'Premier échange',
     description:
-      'Nous échangeons sur votre fonctionnement actuel, la difficulté rencontrée et le résultat que vous recherchez.',
+      'Décrivez les informations qui vous intéressent et les archives disponibles, sans transmettre de documents du cabinet à ce stade.',
   },
   {
-    title: 'Diagnostic et proposition',
+    title: 'Pilote sur un dossier réel',
     description:
-      'Lorsque le besoin le justifie, un diagnostic permet de préciser le périmètre, l’intervention et le devis.',
+      'Nous définissons les archives à traiter, les informations à extraire, le prix et le délai. Le coût de ce premier travail est déduit du déploiement si vous poursuivez le projet.',
   },
   {
-    title: 'Réalisation et mise en service',
+    title: 'Évaluation avec votre équipe',
     description:
-      'La solution est construite avec les intégrations utiles, puis mise en service dans votre environnement.',
+      'Votre équipe consulte les informations extraites et regroupées, vérifie leurs sources et nous indique si elles répondent aux questions posées.',
   },
   {
-    title: 'Suivi et évolution',
+    title: 'Déploiement au cabinet',
     description:
-      'Les retours d’usage guident les ajustements et les évolutions qui apportent une valeur concrète.',
+      'Si vous poursuivez le projet, nous préparons les informations issues des archives supplémentaires convenues avec vous et les intégrons à votre application.',
   },
 ] as const;
 
 export const credibility = [
   'Plus de dix ans d’expérience en développement logiciel',
-  'Vingt ans d’expérience dans des environnements de service exigeants',
-  'Des parcours professionnels comprenant notamment des missions pluriannuelles pour EDF et l’ONU',
+  'Une entreprise familiale ancrée en Suisse romande depuis vingt ans',
+  'Des missions de plusieurs années pour EDF et l’ONU',
   'Allgates Sàrl, société établie dans le canton de Vaud',
 ] as const;
 
 export const contactCta = {
-  title: 'Échangeons sur ce que vous voulez améliorer.',
   description:
-    'Un premier échange gratuit permet de comprendre votre besoin et de déterminer si une intervention Allgates est pertinente.',
+    'Contactez-nous pour discuter de votre dossier et des informations que vous recherchez.',
 } as const;

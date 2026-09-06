@@ -36,7 +36,7 @@ test('une acceptation du service confirme et vide la demande', async ({ page }) 
   const formFields = await fillContactForm(page);
   await page.getByRole('button', { name: /envoyer ma demande/i }).click();
 
-  await expect(page.locator('[data-kind="success"]')).toContainText(/demande.*reçue/i);
+  await expect(page.locator('[data-kind="success"]')).toContainText(/message.*reçu/i);
   await expect(formFields.email).toHaveValue('');
   await expect(formFields.organization).toHaveValue('');
   await expect(formFields.name).toHaveValue('');
@@ -105,7 +105,7 @@ test('les échecs du service conservent la saisie et permettent de réessayer', 
   await expect(formFields.need).toHaveValue('Nous souhaitons préparer un premier échange de cadrage.');
 
   await submit.click();
-  await expect(page.locator('[data-kind="success"]')).toContainText(/demande.*reçue/i);
+  await expect(page.locator('[data-kind="success"]')).toContainText(/message.*reçu/i);
   await expect(formFields.need).toHaveValue('');
   expect(attempt).toBe(3);
 });
@@ -143,6 +143,6 @@ test('un double clic pendant l’envoi ne crée qu’une demande', async ({ page
   await expect(formFields.need).toBeDisabled();
 
   releaseRequest();
-  await expect(page.locator('[data-kind="success"]')).toContainText(/demande.*reçue/i);
+  await expect(page.locator('[data-kind="success"]')).toContainText(/message.*reçu/i);
   expect(requestCount).toBe(1);
 });

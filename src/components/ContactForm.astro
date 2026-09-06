@@ -182,7 +182,7 @@ const emailHref = `mailto:${contactEmail}`;
       if (result.status === 'accepted') {
         form.reset();
         status.dataset.kind = 'success';
-        status.textContent = 'Votre demande a bien été reçue. Nous reviendrons vers vous pour organiser un premier échange.';
+        status.textContent = 'Votre message a bien été reçu. Nous vous recontacterons pour discuter de vos besoins.';
       } else {
         status.dataset.kind = 'error';
         status.setAttribute('role', 'alert');

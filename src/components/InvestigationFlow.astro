@@ -1,4 +1,6 @@
 ---
+import { sourceTypes } from '../data/legal-offer';
+
 interface Props {
 	variant?: 'default' | 'legal-page';
 }
@@ -6,34 +8,18 @@ interface Props {
 const { variant = 'default' } = Astro.props;
 const isLegalPage = variant === 'legal-page';
 
-const sources = isLegalPage
-	? [
-			{ icon: 'mail', title: 'Messageries', text: 'PST et autres exports, avec les messages et leurs pièces jointes.' },
-			{ icon: 'folder', title: 'Documents', text: 'PDF, fichiers bureautiques, images et dossiers transmis.' },
-			{ icon: 'document', title: 'Espaces documentaires', text: 'SharePoint, OneDrive ou NAS, avec leur arborescence.' },
-		]
-	: [
-			{ icon: 'mail', title: 'Messageries et PST', text: 'Boîtes, envoyés, supprimés' },
-			{ icon: 'folder', title: 'Espaces fichiers', text: 'SharePoint, OneDrive, NAS' },
-			{ icon: 'document', title: 'Scans et images', text: 'PDF, factures, photos' },
-		];
+const sources = sourceTypes.map((source, index) => ({ ...source, icon: ['mail', 'folder', 'document'][index] }));
 
-const results = isLegalPage
-	? [
-			{ title: 'Retrouver un échange ou une clause', text: 'Recherche dans l’ensemble des messages, versions et documents.' },
-			{ title: 'Relier un message à ses pièces jointes', text: 'Le contenu reste associé à sa source et à son contexte.' },
-			{ title: 'Reconstituer une chronologie', text: 'Les dates, auteurs et événements utiles sont rapprochés.' },
-		]
-	: [
-			{ title: 'Preuve d’exfiltration', text: 'Quel fichier est parti, quand et vers qui.' },
-			{ title: 'Recherche à 360°', text: 'Retrouvez l’information dans tout le dossier.' },
-			{ title: 'Dossier prêt pour l’audience', text: 'Sources, bordereau de pièces et force probante.' },
+const results = [
+			{ title: 'Les informations demandées', text: 'Consultez les résultats déjà extraits et regroupés selon vos besoins.' },
+			{ title: 'Les échanges associés', text: 'Ouvrez les emails et les pièces jointes liés aux résultats.' },
+			{ title: 'Les documents d’origine', text: 'Accédez aux sources pour vérifier les informations, leurs dates et leurs auteurs.' },
 		];
 ---
 
-<figure class:list={['flow', { 'flow--legal-page': isLegalPage }]} aria-label={isLegalPage ? 'Des archives du cabinet aux réponses utiles au dossier, grâce au système d’investigation numérique Allgates' : 'Des données brutes aux preuves judiciaires, grâce au système d’investigation numérique Allgates'}>
+<figure class:list={['flow', { 'flow--legal-page': isLegalPage }]} aria-label="Vos archives, notre travail de recherche et les résultats dans votre application">
 	<article class="card card--sources">
-		<header><span>1</span><h3>{isLegalPage ? 'Vos archives à interroger' : 'Vos données brutes'}</h3></header>
+		<header><span>1</span><h3>Les archives de votre dossier</h3></header>
 		<ul>
 			{sources.map((source) => (
 				<li>
@@ -49,23 +35,23 @@ const results = isLegalPage
 	<div class="flow__connector" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 16h23M19 8l8 8-8 8"/></svg></div>
 
 	<article class="card card--engine">
-		<header><span>2</span><h3>Système d’investigation numérique{!isLegalPage && ' souverain'}</h3></header>
+		<header><span>2</span><h3>Notre travail sur vos archives</h3></header>
 		<div class="card__seal">
 			<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 27 7v8c0 7-4.6 11.5-11 14-6.4-2.5-11-7-11-14V7zM11 16l3 3 7-8"/></svg>
-			<strong>{isLegalPage ? 'Traitement local et sécurisé' : '100 % local et sécurisé'}</strong>
+			<strong>Accès définis avec le cabinet</strong>
 		</div>
 		<ul>
-			<li><strong>Empreinte SHA-256</strong><p>Identifie les fichiers, même renommés.</p></li>
-			<li><strong>Métadonnées révélées</strong><p>Retrouve les auteurs et dates réels.</p></li>
-			<li><strong>OCR automatique</strong><p>Rend les scans et images recherchables.</p></li>
+			<li><strong>Recherche et extraction</strong><p>Nous recherchons les informations demandées dans vos emails et documents.</p></li>
+			<li><strong>Regroupement des informations</strong><p>Nous organisons les résultats selon les besoins définis avec votre cabinet.</p></li>
+			<li><strong>Liens vers les sources</strong><p>Nous conservons les liens vers les documents, emails et pièces jointes d’origine.</p></li>
 		</ul>
-		<p class="card__promise">{isLegalPage ? 'Secret professionnel préservé.' : 'Zéro cloud. Secret professionnel préservé.'}</p>
+		<p class="card__promise">Hébergement et traitement convenus avant l’import.</p>
 	</article>
 
 	<div class="flow__connector" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 16h23M19 8l8 8-8 8"/></svg></div>
 
 	<article class="card card--results">
-		<header><span>3</span><h3>{isLegalPage ? 'Les réponses recherchées' : 'Vos preuves judiciaires'}</h3></header>
+		<header><span>3</span><h3>Les résultats dans votre application</h3></header>
 		<ul>
 			{results.map((result) => <li><strong>{result.title}</strong><p>{result.text}</p></li>)}
 		</ul>

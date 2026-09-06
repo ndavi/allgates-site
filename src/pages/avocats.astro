@@ -5,7 +5,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import { interventionFramework, legalOffer, offerSteps } from '../data/legal-offer';
 
 const title = 'Recherche dans les archives des cabinets d’avocats | Allgates';
-const description = 'Allgates aide les cabinets d’avocats à retrouver rapidement les informations utiles dans leurs archives de messagerie et leurs documents.';
+const description = 'Allgates extrait et regroupe les informations recherchées dans vos archives. Votre cabinet les consulte dans une application avec un accès aux documents d’origine.';
 ---
 
 <SiteLayout title={title} description={description}>
@@ -13,15 +13,14 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 		<div class="container">
 			<div class="hero__intro">
 				<div class="hero__copy">
-					<p class="section-label">Recherche dans les archives juridiques</p>
+					<p class="section-label">La plateforme pour les cabinets d’avocats</p>
 					<h1>{legalOffer.headline}</h1>
 				</div>
 				<div class="hero__summary">
-					<p class="hero__lead">Allgates prépare les archives du cabinet afin d’y mener des recherches précises et de restituer les éléments utiles avec leurs sources.</p>
+					<p class="hero__lead">Votre cabinet nous indique les informations qui l’intéressent. Allgates les recherche dans les emails, pièces jointes et documents du dossier, puis les extrait et les regroupe. Nous vous livrons une application contenant les résultats et les liens vers leurs sources.</p>
 					<a class="hero-cta" href="/contact/">
 						<span>
-							<strong>Parlons de votre dossier</strong>
-							<small>Premier échange gratuit</small>
+							<strong>Contactez-nous</strong>
 						</span>
 						<svg viewBox="0 0 32 32" aria-hidden="true">
 							<path d="M5.5 7.5h21v14h-12l-6 4v-4h-3z" />
@@ -37,7 +36,7 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 	<section class="section method" aria-labelledby="method-title">
 		<div class="container">
 			<p class="section-label">Le déroulement</p>
-			<h2 id="method-title">Une prestation construite autour de votre question.</h2>
+			<h2 id="method-title">Nous préparons les informations recherchées, vous les consultez dans votre application.</h2>
 			<div class="method-list">
 				{offerSteps.map((step, index) => (
 					<article>
@@ -53,11 +52,11 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 	<section class="section safeguards" aria-labelledby="safeguards-title">
 		<div class="container safeguards__grid">
 			<div>
-				<p class="section-label">Avant l’intervention</p>
-				<h2 id="safeguards-title">Un périmètre clair avant de commencer.</h2>
+				<p class="section-label">Confidentialité et déploiement</p>
+				<h2 id="safeguards-title">Nous définissons avec vous l’hébergement et les accès à vos données.</h2>
 			</div>
 			<div>
-				<p class="safeguards__intro">Le diagnostic permet de vérifier que les archives disponibles, la question posée et la restitution attendue forment un ensemble cohérent.</p>
+				<p class="safeguards__intro">Avant le transfert de données, nous définissons avec vous les conditions d’hébergement, d’accès et de traitement adaptées aux exigences du dossier et du cabinet.</p>
 				<ul>
 					{interventionFramework.map((item) => <li>{item}</li>)}
 				</ul>

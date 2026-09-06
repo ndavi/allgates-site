@@ -18,7 +18,7 @@ test('un prospect parcourt l’offre depuis l’accueil et atteint le contact', 
   await expect(page).toHaveURL(/\/avocats\/$/);
   await expect(page.getByRole('main').getByRole('heading', { level: 1 })).toBeVisible();
 
-  await page.getByRole('link', { name: /parlons de votre dossier/i }).first().click();
+  await page.getByRole('link', { name: /contactez-nous/i }).first().click();
   await expect(page).toHaveURL(/\/contact\/$/);
   await expect(page.getByRole('main').getByRole('heading', { level: 1 })).toBeVisible();
 });
@@ -62,7 +62,7 @@ test('la navigation compacte reste utilisable au clavier', async ({ page }) => {
   await expect(menu).toHaveAttribute('aria-expanded', 'true');
 
   const offerLink = page.getByRole('navigation', { name: /navigation principale/i })
-    .getByRole('link', { name: /archives pour avocats/i });
+    .getByRole('link', { name: /la plateforme/i });
   await expect(offerLink).toBeVisible();
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
@@ -127,7 +127,7 @@ test('le contact et la navigation restent accessibles sans JavaScript sur mobile
   const menu = page.getByRole('button', { name: /menu/i });
   await expect(menu).toBeHidden();
   const navigationLink = page.getByRole('navigation', { name: /navigation principale/i })
-    .getByRole('link', { name: /archives pour avocats/i });
+    .getByRole('link', { name: /la plateforme/i });
   await expect(navigationLink).toBeVisible();
   const [navigationBox, titleBox] = await Promise.all([
     navigationLink.boundingBox(),
