@@ -104,7 +104,7 @@ import { competencies, credibility, method } from '../data/site';
 </SiteLayout>
 
 <style>
-  .hero { overflow: hidden; padding: clamp(4.5rem, 8vw, 8rem) 0 clamp(5.5rem, 11vw, 10rem); }
+  .hero { overflow: hidden; padding: clamp(2rem, 3vw, 3.5rem) 0 clamp(2.5rem, 4vw, 4rem); }
   .hero__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(2.5rem, 4vw, 5rem); align-items: center; }
   .hero__content h1 { max-width: 15ch; font-size: clamp(2.75rem, 5vw, 4.5rem); }
   .hero__kicker { margin-bottom: 1.5rem; color: var(--color-accent); font-size: 0.88rem; font-weight: 740; }
@@ -123,11 +123,11 @@ import { competencies, credibility, method } from '../data/site';
   .flow svg circle { fill: var(--color-accent); stroke: none; }
   .expertise { background: var(--color-surface); }
   .expertise__list { border-top: 1px solid var(--color-line); }
-  .expertise__item { display: grid; grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1fr); gap: 2rem; align-items: start; border-bottom: 1px solid var(--color-line); padding: 2rem 0; }
+  .expertise__item { display: grid; grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1fr); gap: 2rem; align-items: start; border-bottom: 1px solid var(--color-line); padding: 1.5rem 0; }
   .expertise__item p { max-width: 43rem; color: var(--color-muted); }
   .legal-offer { background: #e8eef7; }
   .legal-offer__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(3rem, 9vw, 9rem); align-items: center; }
-  .source-map { position: relative; display: grid; grid-template: 'mail lines process' auto 'file lines process' auto 'empty output output' auto / 1fr 3rem 1.25fr; gap: 1rem 0; align-items: center; min-height: 25rem; border: 1px solid #b8c5d6; background: color-mix(in srgb, var(--color-surface) 45%, transparent); padding: clamp(1.25rem, 3vw, 2.5rem); }
+  .source-map { position: relative; display: grid; grid-template: 'mail lines process' auto 'file lines process' auto 'empty output output' auto / 1fr 3rem 1.25fr; gap: 1rem 0; align-items: center; min-height: 21rem; border: 1px solid #b8c5d6; background: color-mix(in srgb, var(--color-surface) 45%, transparent); padding: clamp(1.25rem, 3vw, 2.5rem); }
   .source-map__input, .source-map__output { display: flex; align-items: center; gap: 0.75rem; border: 1px solid #a9b9cf; background: var(--color-surface); padding: 1rem; font-size: 0.875rem; font-weight: 680; }
   .source-map__input svg, .source-map__output svg { width: 1.75rem; flex: none; fill: none; stroke: var(--color-accent); stroke-width: 1.4; }
   .source-map__input--mail { grid-area: mail; } .source-map__input--file { grid-area: file; }
@@ -143,7 +143,7 @@ import { competencies, credibility, method } from '../data/site';
   .method-section :global(.section-heading__label) { color: #93a7c0; }
   .method-section h2, .method-section h3 { color: white; }
   .method { margin: 0; padding: 0; border-top: 1px solid #38506d; list-style: none; }
-  .method li { display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem; border-bottom: 1px solid #38506d; padding: 1.75rem 0; }
+  .method li { display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem; border-bottom: 1px solid #38506d; padding: 1.5rem 0; }
   .method__index { color: #7fa5ff; font-size: 0.75rem; font-weight: 740; }
   .method li div { display: grid; grid-template-columns: minmax(13rem, 0.75fr) 1fr; gap: 2rem; }
   .method p { color: #b9c7d8; }
@@ -151,11 +151,10 @@ import { competencies, credibility, method } from '../data/site';
   .credibility__grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: clamp(3rem, 9vw, 8rem); }
   .credibility h2 { max-width: 13ch; margin-top: 1rem; }
   .credibility__intro { color: var(--color-muted); font-size: 1.12rem; }
-  .credibility ul { margin: 2.5rem 0 0; padding: 0; list-style: none; }
+  .credibility ul { margin: 2rem 0 0; padding: 0; list-style: none; }
   .credibility li { position: relative; border-top: 1px solid var(--color-line); padding: 1.15rem 0 1.15rem 1.5rem; font-weight: 620; overflow-wrap: anywhere; }
   .credibility li:last-child { border-bottom: 1px solid var(--color-line); }
   .credibility li::before { position: absolute; top: 1.65rem; left: 0; width: 0.45rem; height: 0.45rem; background: var(--color-accent); content: ''; }
-  .contact-wrap { padding-bottom: var(--section-space); }
   @media (max-width: 900px) {
     .hero__grid, .legal-offer__grid, .credibility__grid { grid-template-columns: 1fr; }
     .hero__content h1 { max-width: 13ch; }
@@ -163,7 +162,7 @@ import { competencies, credibility, method } from '../data/site';
     .source-map { width: min(100%, 38rem); }
   }
   @media (max-width: 640px) {
-    .hero { padding-top: 3.5rem; }
+    .hero { padding-top: 2.5rem; }
     .flow { padding-left: 0.85rem; }
     .flow__step { grid-template-columns: auto 1fr; }
     .flow__step svg { display: none; }

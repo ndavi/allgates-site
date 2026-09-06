@@ -8,7 +8,7 @@
   --color-accent: #245beb;
   --color-line: #d8e1ed;
   --page-gutter: clamp(1.25rem, 4vw, 3.5rem);
-  --section-space: clamp(5rem, 10vw, 9rem);
+  --section-space: clamp(2rem, 3vw, 3.5rem);
   color-scheme: light;
   font-family: 'Manrope Variable', 'Manrope', sans-serif;
   font-synthesis: none;
@@ -38,7 +38,7 @@ main, section, header, footer, nav, div, article, form, fieldset { min-width: 0;
 .button--secondary:hover { border-color: var(--color-ink); background: var(--color-surface); }
 .text-link { display: inline-flex; align-items: center; border-bottom: 1px solid currentColor; color: var(--color-accent); font-weight: 700; line-height: 1.45; text-decoration: none; }
 .text-link:hover { color: var(--color-ink); }
-.section-heading { display: grid; grid-template-columns: minmax(12rem, 0.6fr) minmax(0, 1.4fr); gap: 2rem; align-items: start; margin-bottom: clamp(3rem, 6vw, 5rem); }
+.section-heading { display: grid; grid-template-columns: minmax(12rem, 0.6fr) minmax(0, 1.4fr); gap: 2rem; align-items: start; margin-bottom: clamp(1.5rem, 2.5vw, 2rem); }
 .section-heading__label { color: var(--color-muted); font-size: 0.9rem; font-weight: 720; }
 .section-heading h2 { max-width: 15ch; }
 @media (max-width: 700px) { .section-heading { grid-template-columns: 1fr; gap: 1rem; } }
