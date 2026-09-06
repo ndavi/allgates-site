@@ -1,7 +1,8 @@
 ---
 import ContactCta from '../components/ContactCta.astro';
+import InvestigationFlow from '../components/InvestigationFlow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { interventionFramework, legalOffer, offerSteps, sourceTypes } from '../data/legal-offer';
+import { interventionFramework, legalOffer, offerSteps } from '../data/legal-offer';
 
 const title = 'Recherche dans les archives des cabinets d’avocats | Allgates';
 const description = 'Allgates aide les cabinets d’avocats à retrouver rapidement les informations utiles dans leurs archives de messagerie et leurs documents.';
@@ -9,50 +10,27 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 
 <SiteLayout title={title} description={description}>
 	<section class="hero section">
-		<div class="container hero__grid">
-			<div class="hero__copy">
-				<p class="section-label">Recherche dans les archives juridiques</p>
-				<h1>{legalOffer.headline}</h1>
-				<p class="hero__lead">Lorsque les messages, pièces jointes et documents s’accumulent, Allgates prépare les archives remises par le cabinet afin d’y mener des recherches précises et de restituer les éléments utiles avec leurs sources.</p>
-				<a class="hero-cta" href="/contact/">
-					<span>
-						<strong>Parlons de votre dossier</strong>
-						<small>Premier échange gratuit</small>
-					</span>
-					<svg viewBox="0 0 32 32" aria-hidden="true">
-						<path d="M5.5 7.5h21v14h-12l-6 4v-4h-3z" />
-						<path d="M10 12h12M10 17h8" />
-					</svg>
-				</a>
-			</div>
-			<aside class="hero__aside" aria-label="Exemples de questions traitées">
-				<p>Une intervention peut notamment vous aider à :</p>
-				<ul>
-					<li>Retrouver un échange, une clause ou une version</li>
-					<li>Relier un message à ses pièces jointes</li>
-					<li>Reconstituer rapidement une chronologie</li>
-				</ul>
-			</aside>
-		</div>
-	</section>
-
-	<section class="section sources" aria-labelledby="sources-title">
 		<div class="container">
-			<div class="heading-row">
-				<div>
-					<p class="section-label">Les archives de départ</p>
-					<h2 id="sources-title">Des sources hétérogènes, réunies pour la recherche.</h2>
+			<div class="hero__intro">
+				<div class="hero__copy">
+					<p class="section-label">Recherche dans les archives juridiques</p>
+					<h1>{legalOffer.headline}</h1>
 				</div>
-				<p>Les principaux formats de messagerie, de documents et d’exports documentaires peuvent être pris en charge. Leur exploitabilité est vérifiée lors du diagnostic.</p>
+				<div class="hero__summary">
+					<p class="hero__lead">Allgates prépare les archives du cabinet afin d’y mener des recherches précises et de restituer les éléments utiles avec leurs sources.</p>
+					<a class="hero-cta" href="/contact/">
+						<span>
+							<strong>Parlons de votre dossier</strong>
+							<small>Premier échange gratuit</small>
+						</span>
+						<svg viewBox="0 0 32 32" aria-hidden="true">
+							<path d="M5.5 7.5h21v14h-12l-6 4v-4h-3z" />
+							<path d="M10 12h12M10 17h8" />
+						</svg>
+					</a>
+				</div>
 			</div>
-			<div class="source-list">
-				{sourceTypes.map((source) => (
-					<article>
-						<h3>{source.title}</h3>
-						<p>{source.text}</p>
-					</article>
-				))}
-			</div>
+			<InvestigationFlow variant="legal-page" />
 		</div>
 	</section>
 
@@ -87,7 +65,7 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 		</div>
 	</section>
 
-	<div class="container contact-cta-wrap">
+	<div class="container contact-wrap">
 		<ContactCta />
 	</div>
 </SiteLayout>
@@ -99,9 +77,9 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 		background: linear-gradient(120deg, #edf3ff 0%, var(--color-bg) 56%, #f8faff 100%);
 	}
 
-	.hero__grid {
+	.hero__intro {
 		display: grid;
-		grid-template-columns: minmax(0, 1.5fr) minmax(17rem, 0.5fr);
+		grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.55fr);
 		gap: clamp(2rem, 7vw, 7rem);
 		align-items: end;
 	}
@@ -115,6 +93,11 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 
 	.hero__copy {
 		max-width: 49rem;
+	}
+
+	.hero__summary {
+		padding-top: 1.5rem;
+		border-top: 3px solid var(--color-accent);
 	}
 
 	.section-label {
@@ -162,10 +145,10 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 	}
 
 	.hero__lead {
-		max-width: 42rem;
-		margin: 1.75rem 0 2rem;
+		max-width: 32rem;
+		margin: 0 0 2rem;
 		color: var(--color-muted);
-		font-size: clamp(1.1rem, 2vw, 1.35rem);
+		font-size: clamp(1.05rem, 1.7vw, 1.2rem);
 		line-height: 1.62;
 	}
 
@@ -220,63 +203,11 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 		transform: translate(0.25rem, 0.25rem);
 	}
 
-	.hero__aside {
-		padding: 1.5rem 0 0;
-		border-top: 3px solid var(--color-accent);
-		color: var(--color-muted);
-	}
-
-	.hero__aside p {
-		margin: 0;
-		font-size: 1.02rem;
-		line-height: 1.55;
-	}
-
-	.hero__aside ul {
-		margin: 1.5rem 0 0;
-		padding: 0;
-		list-style: none;
-		color: var(--color-ink);
-		font-weight: 700;
-	}
-
-	.hero__aside li {
-		padding: 0.72rem 0;
-		border-top: 1px solid var(--color-line);
-	}
-
-	.sources {
-		background: var(--color-surface);
-	}
-
-	.heading-row {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.45fr);
-		gap: 2rem;
-		align-items: end;
-	}
-
-	.heading-row > p {
-		max-width: 30rem;
-		margin: 0;
-		color: var(--color-muted);
-		line-height: 1.6;
-	}
-
-	.source-list {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2rem;
-		margin-top: clamp(2.5rem, 5vw, 4.5rem);
-	}
-
-	.source-list article,
 	.method-list article {
 		padding-top: 1.25rem;
 		border-top: 1px solid var(--color-line);
 	}
 
-	.source-list p,
 	.method-list p:not(.step-number) {
 		margin: 0.75rem 0 0;
 		color: var(--color-muted);
@@ -351,22 +282,16 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 		content: '';
 	}
 
-	.contact-cta-wrap {
-		padding-block: var(--section-space);
+	.contact-wrap {
+		padding-top: var(--section-space);
 	}
 
 	@media (max-width: 820px) {
-		.hero__grid,
-		.heading-row,
+		.hero__intro,
 		.safeguards__grid {
 			grid-template-columns: 1fr;
 		}
 
-		.hero__aside {
-			max-width: 34rem;
-		}
-
-		.source-list,
 		.method-list {
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
@@ -382,8 +307,6 @@ const description = 'Allgates aide les cabinets d’avocats à retrouver rapidem
 		h2,
 		h3,
 		.hero__lead,
-			.hero__aside,
-			.source-list p,
 			.method-list p,
 			.safeguards li {
 			overflow-wrap: anywhere;

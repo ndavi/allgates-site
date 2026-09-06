@@ -1,5 +1,6 @@
 ---
 import ContactCta from '../components/ContactCta.astro';
+import InvestigationFlow from '../components/InvestigationFlow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { competencies, credibility, method } from '../data/site';
 ---
@@ -73,52 +74,7 @@ import { competencies, credibility, method } from '../data/site';
         </div>
       </div>
 
-      <figure class="forensic-flow" aria-label="Des données brutes aux preuves judiciaires, grâce au moteur forensique Allgates">
-        <article class="forensic-card forensic-card--sources">
-          <header><span>1</span><h3>Vos données brutes</h3></header>
-          <ul>
-            <li>
-              <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="7" width="26" height="18"/><path d="m4 9 12 9 12-9"/></svg>
-              <div><strong>Messageries et PST</strong><p>Boîtes, envoyés, supprimés</p></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 8h10l3 4h13v14H3z"/></svg>
-              <div><strong>Espaces fichiers</strong><p>SharePoint, OneDrive, NAS</p></div>
-            </li>
-            <li>
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 3h13l5 5v21H7zM20 3v6h5M11 15h10M11 20h10"/></svg>
-              <div><strong>Scans et images</strong><p>PDF, factures, photos</p></div>
-            </li>
-          </ul>
-        </article>
-
-        <div class="forensic-flow__connector" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 16h23M19 8l8 8-8 8"/></svg></div>
-
-        <article class="forensic-card forensic-card--engine">
-          <header><span>2</span><h3>Moteur forensique souverain</h3></header>
-          <div class="forensic-card__seal">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 27 7v8c0 7-4.6 11.5-11 14-6.4-2.5-11-7-11-14V7zM11 16l3 3 7-8"/></svg>
-            <strong>100 % local et sécurisé</strong>
-          </div>
-          <ul>
-            <li><strong>Empreinte SHA-256</strong><p>Identifie les fichiers, même renommés.</p></li>
-            <li><strong>Métadonnées révélées</strong><p>Retrouve les auteurs et dates réels.</p></li>
-            <li><strong>OCR automatique</strong><p>Rend les scans et images recherchables.</p></li>
-          </ul>
-          <p class="forensic-card__promise">Zéro cloud. Secret professionnel préservé.</p>
-        </article>
-
-        <div class="forensic-flow__connector" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 16h23M19 8l8 8-8 8"/></svg></div>
-
-        <article class="forensic-card forensic-card--results">
-          <header><span>3</span><h3>Vos preuves judiciaires</h3></header>
-          <ul>
-            <li><strong>Preuve d’exfiltration</strong><p>Quel fichier est parti, quand et vers qui.</p></li>
-            <li><strong>Recherche à 360°</strong><p>Retrouvez l’information dans tout le dossier.</p></li>
-            <li><strong>Dossier prêt pour l’audience</strong><p>Sources, bordereau de pièces et force probante.</p></li>
-          </ul>
-        </article>
-      </figure>
+      <InvestigationFlow />
     </div>
   </section>
 
@@ -179,32 +135,6 @@ import { competencies, credibility, method } from '../data/site';
   .legal-offer__intro h2 { max-width: 16ch; margin-top: 1rem; }
   .legal-offer__content > p { max-width: 39rem; color: var(--color-muted); font-size: 1.05rem; }
   .legal-offer__content .text-link { margin-top: 1.35rem; }
-  .forensic-flow { display: grid; grid-template-columns: minmax(0, 1fr) 3.5rem minmax(0, 1.12fr) 3.5rem minmax(0, 1fr); gap: 0.75rem; align-items: stretch; margin: clamp(2rem, 4vw, 3.25rem) 0 0; }
-  .forensic-card { display: flex; min-height: 25rem; flex-direction: column; border: 1px solid #a9b9cf; background: var(--color-surface); padding: clamp(1.1rem, 2vw, 1.5rem); }
-  .forensic-card header { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; align-items: center; padding-bottom: 1.15rem; border-bottom: 1px solid var(--color-line); }
-  .forensic-card header > span { display: grid; width: 2rem; height: 2rem; place-items: center; border: 1px solid currentColor; color: var(--color-accent); font-size: 0.8rem; font-weight: 780; }
-  .forensic-card h3 { font-size: clamp(1.05rem, 1.55vw, 1.3rem); letter-spacing: -0.035em; }
-  .forensic-card ul { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
-  .forensic-card li { min-width: 0; border-bottom: 1px solid var(--color-line); padding: 1rem 0; }
-  .forensic-card li:last-child { border-bottom: 0; }
-  .forensic-card li strong { display: block; font-size: 0.9rem; line-height: 1.35; }
-  .forensic-card li p { margin-top: 0.2rem; color: var(--color-muted); font-size: 0.82rem; line-height: 1.45; }
-  .forensic-card--sources li { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: 0.8rem; align-items: center; }
-  .forensic-card--sources li > svg { width: 2rem; fill: none; stroke: var(--color-accent); stroke-width: 1.5; }
-  .forensic-card--engine { border-color: #86a7f8; background: #dce7ff; box-shadow: 0.55rem 0.55rem 0 #b8cafa; }
-  .forensic-card--engine header { border-bottom-color: #a9bef0; }
-  .forensic-card--engine li { border-bottom-color: #b7c9ef; }
-  .forensic-card__seal { display: flex; gap: 0.65rem; align-items: center; margin-top: 1rem; color: var(--color-accent); }
-  .forensic-card__seal svg { width: 1.9rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; }
-  .forensic-card__seal strong { font-size: 0.86rem; line-height: 1.35; }
-  .forensic-card__promise { margin-top: auto; border-left: 2px solid var(--color-accent); padding-left: 0.75rem; color: var(--color-ink); font-size: 0.82rem; font-weight: 750; line-height: 1.4; }
-  .forensic-card--results { border-color: var(--color-ink); background: var(--color-ink); }
-  .forensic-card--results header, .forensic-card--results li { border-bottom-color: #38506d; }
-  .forensic-card--results h3, .forensic-card--results li strong { color: white; }
-  .forensic-card--results header > span { color: #9ab6ff; }
-  .forensic-card--results li p { color: #c1cede; }
-  .forensic-flow__connector { display: grid; min-width: 0; place-items: center; }
-  .forensic-flow__connector svg { width: 2.7rem; fill: none; stroke: #7890ae; stroke-linecap: square; stroke-linejoin: miter; stroke-width: 1.5; }
   .method-section { background: var(--color-ink); }
   .method-section :global(.section-heading__label) { color: #93a7c0; }
   .method-section h2, .method-section h3 { color: white; }
@@ -227,13 +157,6 @@ import { competencies, credibility, method } from '../data/site';
     .flow { max-width: 38rem; }
     .legal-offer__intro { grid-template-columns: 1fr; gap: 1.5rem; }
   }
-  @media (max-width: 1050px) {
-    .forensic-flow { width: min(100%, 42rem); grid-template-columns: 1fr; gap: 0; margin-inline: auto; }
-    .forensic-card { min-height: 0; }
-    .forensic-flow__connector { height: 3.25rem; }
-    .forensic-flow__connector svg { width: 2.5rem; transform: rotate(90deg); }
-    .forensic-card--engine { box-shadow: 0.4rem 0.4rem 0 #b8cafa; }
-  }
   @media (max-width: 640px) {
     .hero { padding-top: 2.5rem; }
     .flow { padding-left: 0.85rem; }
@@ -252,7 +175,6 @@ import { competencies, credibility, method } from '../data/site';
     .flow__step { grid-template-columns: 1fr; gap: 0.5rem; padding: 0.75rem; }
     .flow__step--core { margin-left: 0; }
     .flow__number { font-size: 0.75rem; }
-    .forensic-card { padding: 1rem; }
     .method li { grid-template-columns: 1fr; }
   }
 </style>
