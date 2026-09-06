@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const publicRoutes = ['/', '/avocats/', '/contact/'] as const;
+const publicRoutes = ['/', '/contact/', '/mentions-legales/'] as const;
 
 async function fillValidContactForm(page: import('@playwright/test').Page) {
   await page.getByRole('textbox', { name: /email professionnel/i }).fill('contact@example.test');
@@ -12,10 +12,6 @@ test('un prospect parcourt l’offre depuis l’accueil et atteint le contact', 
   await page.goto('/');
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
-  await expect(page.getByRole('main').getByRole('heading', { level: 1 })).toBeVisible();
-
-  await page.locator('main a[href="/avocats/"]').first().click();
-  await expect(page).toHaveURL(/\/avocats\/$/);
   await expect(page.getByRole('main').getByRole('heading', { level: 1 })).toBeVisible();
 
   await page.getByRole('link', { name: /contactez-nous/i }).first().click();
@@ -41,7 +37,7 @@ test('les routes et liens internes publics sont accessibles', async ({ page, req
 });
 
 test('le lien d’évitement place le focus sur le contenu principal', async ({ page }) => {
-  await page.goto('/avocats/');
+  await page.goto('/');
 
   await page.keyboard.press('Tab');
   const skipLink = page.getByRole('link', { name: /aller au contenu/i });
@@ -61,14 +57,14 @@ test('la navigation compacte reste utilisable au clavier', async ({ page }) => {
   await page.keyboard.press('Enter');
   await expect(menu).toHaveAttribute('aria-expanded', 'true');
 
-  const offerLink = page.getByRole('navigation', { name: /navigation principale/i })
-    .getByRole('link', { name: /la plateforme/i });
-  await expect(offerLink).toBeVisible();
+  const contactLink = page.getByRole('navigation', { name: /navigation principale/i })
+    .getByRole('link', { name: /contactez-nous/i });
+  await expect(contactLink).toBeVisible();
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
-  await expect(offerLink).toBeFocused();
+  await expect(contactLink).toBeFocused();
   await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(/\/avocats\/$/);
+  await expect(page).toHaveURL(/\/contact\/$/);
 });
 
 test('un formulaire invalide conserve les informations déjà saisies', async ({ page }) => {
@@ -127,7 +123,7 @@ test('le contact et la navigation restent accessibles sans JavaScript sur mobile
   const menu = page.getByRole('button', { name: /menu/i });
   await expect(menu).toBeHidden();
   const navigationLink = page.getByRole('navigation', { name: /navigation principale/i })
-    .getByRole('link', { name: /la plateforme/i });
+    .getByRole('link', { name: /contactez-nous/i });
   await expect(navigationLink).toBeVisible();
   const [navigationBox, titleBox] = await Promise.all([
     navigationLink.boundingBox(),

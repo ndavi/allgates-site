@@ -5,7 +5,7 @@ export const site = {
   legalName: 'Allgates Sàrl',
   descriptor: 'Recherche documentaire pour cabinets d’avocats',
   description:
-    'Allgates extrait et regroupe les informations utiles aux cabinets d’avocats de Suisse romande dans une application avec un accès aux documents et échanges d’origine.',
+    'Allgates recherche les pièces et échanges utiles à votre dossier et réunit les résultats dans une application avec leurs sources, pour les cabinets d’avocats de Suisse romande.',
   contactEmail,
 } as const;
 
@@ -19,7 +19,6 @@ export const legalCompany = {
 
 export const navigation = [
   { label: 'Accueil', href: '/' },
-  { label: 'La plateforme', href: '/avocats/' },
   { label: 'Contactez-nous', href: '/contact/' },
 ] as const;
 
@@ -43,35 +42,27 @@ export const benefits = [
 
 export const method = [
   {
-    title: 'Premier échange',
-    description:
-      'Décrivez les informations qui vous intéressent et les archives disponibles, sans transmettre de documents du cabinet à ce stade.',
+    title: 'Parlons de votre besoin',
+    description: 'Vous nous décrivez les informations recherchées et les archives disponibles, sans transmettre de documents confidentiels à ce stade.',
   },
   {
-    title: 'Pilote sur un dossier réel',
-    description:
-      'Nous définissons les archives à traiter, les informations à extraire, le prix et le délai. Le coût de ce premier travail est déduit du déploiement si vous poursuivez le projet.',
+    title: 'Convenons du travail à réaliser',
+    description: 'Nous définissons ensemble les archives à traiter, les résultats attendus, le prix et le délai. Les modalités de traitement et d’accès aux données sont précisées avant de commencer.',
   },
   {
-    title: 'Évaluation avec votre équipe',
-    description:
-      'Votre équipe consulte les informations extraites et regroupées, vérifie leurs sources et nous indique si elles répondent aux questions posées.',
-  },
-  {
-    title: 'Déploiement au cabinet',
-    description:
-      'Si vous poursuivez le projet, nous préparons les informations issues des archives supplémentaires convenues avec vous et les intégrons à votre application.',
+    title: 'Consultez les résultats',
+    description: 'Nous vous livrons une application contenant les informations préparées et leurs sources. Votre équipe peut les examiner et nous faire part de ses retours.',
   },
 ] as const;
 
 export const credibility = [
   'Plus de dix ans d’expérience en développement logiciel',
   'Une entreprise familiale ancrée en Suisse romande depuis vingt ans',
-  'Des missions de plusieurs années pour EDF et l’ONU',
   'Allgates Sàrl, société établie dans le canton de Vaud',
 ] as const;
 
 export const contactCta = {
+  title: 'Comment commencer ?',
   description:
-    'Contactez-nous pour discuter de votre dossier et des informations que vous recherchez.',
+    'Un premier échange permet de comprendre votre besoin et de convenir du travail à réaliser.',
 } as const;

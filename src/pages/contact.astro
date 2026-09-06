@@ -10,220 +10,37 @@ const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEnd
 
 <SiteLayout
   title="Contactez-nous | Allgates"
-  description="Contactez Allgates pour discuter des informations à extraire de vos archives et à regrouper dans une application avec un accès aux sources."
+  description="Contactez Allgates pour discuter de votre besoin de recherche dans vos emails et documents."
 >
   <section class="section contact-intro">
-    <div class="container contact-intro__grid">
-      <div class="contact-intro__copy">
-        <h1>Parlons de votre dossier et des informations que vous recherchez.</h1>
-        <p class="lead">
-          Décrivez les informations que vous recherchez et les archives dont vous disposez. Quelques lignes suffisent pour commencer l’échange, sans transmettre vos dossiers.
-        </p>
-      </div>
-
-      <aside class="contact-note" aria-labelledby="before-writing-title">
-        <p class="contact-note__label">Après votre message</p>
-        <h2 id="before-writing-title">Un premier échange sur vos besoins</h2>
-        <p>
-          Nous vous recontactons pour préciser les informations recherchées, les archives disponibles et vos contraintes. Nous convenons ensuite du travail à réaliser, du prix et du délai avant de commencer.
-        </p>
-      </aside>
+    <div class="container">
+      <h1>Parlons de votre besoin.</h1>
+      <p class="lead">Quelques lignes suffisent pour commencer. Nous vous recontacterons pour en discuter et convenir du travail à réaliser.</p>
     </div>
   </section>
 
   <section class="section contact-content" aria-labelledby="contact-form-title">
     <div class="container contact-content__grid">
+      <div class="contact-context">
+        <h2 id="contact-form-title">Écrivez-nous</h2>
+        <p>Indiquez simplement ce que vous cherchez et les archives dont vous disposez, sans citer de client ni de détail confidentiel.</p>
+      </div>
       <div class="contact-form-column">
         <ContactForm endpoint={endpoint} />
       </div>
-
-      <div class="contact-context">
-        <p class="eyebrow">Votre message</p>
-        <h2 id="contact-form-title">Quelles informations recherchez-vous ?</h2>
-        <p>
-          Décrivez le type de recherches qui vous occupe, sans citer de client ni de détail confidentiel.
-        </p>
-
-        <ol class="contact-steps">
-          <li>
-            <span>01</span>
-            <div><strong>Vos archives</strong><p>Emails, PDF, documents scannés ou exports de dossiers partagés.</p></div>
-          </li>
-          <li>
-            <span>02</span>
-            <div><strong>Vos recherches</strong><p>Retrouver un échange, une pièce jointe ou les éléments d’une chronologie.</p></div>
-          </li>
-          <li>
-            <span>03</span>
-            <div><strong>Vos contraintes</strong><p>Le volume approximatif et les exigences d’hébergement ou d’accès déjà identifiées.</p></div>
-          </li>
-        </ol>
-      </div>
-
     </div>
   </section>
 </SiteLayout>
 
 <style>
-  .contact-intro {
-    padding-top: var(--hero-top-space);
-    padding-bottom: clamp(3rem, 6vw, 5rem);
-  }
-
-  .contact-intro__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(17rem, 0.6fr);
-    align-items: end;
-    gap: clamp(2rem, 6vw, 6rem);
-  }
-
-  .contact-intro__copy {
-    max-width: 48rem;
-  }
-
-  h1 {
-    max-width: 18ch;
-    margin: 0.25rem 0 1.25rem;
-    font-size: clamp(2.5rem, 4.5vw, 4.25rem);
-    letter-spacing: -0.045em;
-    line-height: 1.06;
-    overflow-wrap: anywhere;
-  }
-
-  .lead {
-    max-width: 42rem;
-    margin: 0;
-    color: var(--color-muted);
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    line-height: 1.65;
-  }
-
-  .eyebrow,
-  .contact-note__label {
-    margin: 0 0 0.85rem;
-    color: var(--color-accent);
-    font-size: 0.875rem;
-    font-weight: 800;
-    letter-spacing: 0;
-  }
-
-  .contact-note {
-    padding: 1.5rem 0 0.25rem 1.5rem;
-    border-left: 2px solid var(--color-accent);
-  }
-
-  .contact-note h2 {
-    margin: 0 0 0.75rem;
-    font-size: 1.35rem;
-  }
-
-  .contact-note p:last-child {
-    margin: 0;
-    color: var(--color-muted);
-    line-height: 1.65;
-    overflow-wrap: anywhere;
-  }
-
-  .contact-content {
-    padding-top: var(--section-space);
-    border-top: 1px solid var(--color-line);
-    background: linear-gradient(180deg, rgb(216 225 237 / 28%), transparent 22rem);
-  }
-
-  .contact-content__grid {
-    display: grid;
-    grid-template-columns: minmax(15rem, 0.6fr) minmax(0, 1.4fr);
-    align-items: start;
-    gap: clamp(2rem, 6vw, 6rem);
-  }
-
-  .contact-context {
-    grid-column: 1;
-    grid-row: 1;
-    position: sticky;
-    top: 7rem;
-  }
-
-  .contact-form-column {
-    grid-column: 2;
-    grid-row: 1;
-    min-width: 0;
-  }
-
-  .contact-context h2 {
-    max-width: 12ch;
-    margin: 0 0 1rem;
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    letter-spacing: -0.035em;
-    line-height: 1.05;
-  }
-
-  .contact-context > p:not(.eyebrow) {
-    color: var(--color-muted);
-    line-height: 1.65;
-  }
-
-  .contact-steps {
-    display: grid;
-    gap: 0;
-    margin: 2rem 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .contact-steps li {
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 0.9rem;
-    padding: 1.1rem 0;
-    border-top: 1px solid var(--color-line);
-  }
-
-  .contact-steps li:last-child {
-    border-bottom: 1px solid var(--color-line);
-  }
-
-  .contact-steps li > span {
-    color: var(--color-accent);
-    font-size: 0.75rem;
-    font-weight: 800;
-  }
-
-  .contact-steps strong {
-    color: var(--color-ink);
-  }
-
-  .contact-steps p {
-    margin: 0.3rem 0 0;
-    color: var(--color-muted);
-    font-size: 0.92rem;
-    line-height: 1.55;
-    overflow-wrap: anywhere;
-  }
-
+  .contact-intro { padding-top: var(--hero-top-space); }
+  h1 { max-width: 20ch; margin-bottom: 1.25rem; font-size: clamp(2.5rem, 4.5vw, 4.25rem); }
+  .lead { max-width: 42rem; color: var(--color-muted); font-size: clamp(1.1rem, 2vw, 1.25rem); }
+  .contact-content { border-top: 1px solid var(--color-line); }
+  .contact-content__grid { display: grid; grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+  .contact-context h2 { margin-bottom: 1rem; font-size: clamp(2rem, 3vw, 2.75rem); }
+  .contact-context p { color: var(--color-muted); }
   @media (max-width: 52rem) {
-    .contact-intro__grid,
-    .contact-content__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-intro__grid {
-      align-items: start;
-    }
-
-    .contact-note {
-      max-width: 42rem;
-    }
-
-    .contact-context {
-      grid-column: auto;
-      grid-row: 2;
-      position: static;
-    }
-
-    .contact-form-column {
-      grid-column: auto;
-      grid-row: 1;
-    }
+    .contact-content__grid { grid-template-columns: 1fr; }
   }
 </style>
