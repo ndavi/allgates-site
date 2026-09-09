@@ -57,7 +57,6 @@ export const method = [
 
 export const credibility = [
   'Plus de dix ans d’expérience en développement logiciel',
-  'Une entreprise familiale ancrée en Suisse romande depuis vingt ans',
   'Allgates Sàrl, société établie dans le canton de Vaud',
 ] as const;
 
