@@ -48,11 +48,14 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email)
     respond(422, ['error' => 'invalid_fields']);
 }
 
+$stage = 'configuration';
+$mail = null;
 try {
     define('ALLGATES_CONTACT', true);
     $config = require __DIR__ . '/private/config.php';
     require __DIR__ . '/private/vendor/autoload.php';
 
+    $stage = 'rate_limit';
     // Bounded shared counter; no raw IP addresses or messages stored.
     $path = sys_get_temp_dir() . '/allgates-contact-' . hash('sha256', __DIR__) . '.json';
     $file = fopen($path, 'c+');
@@ -81,6 +84,7 @@ try {
         respond(429, ['error' => 'too_many_requests']);
     }
 
+    $stage = 'message_setup';
     $mail = new PHPMailer(true);
     $mail->isSMTP();
     $mail->Host = 'mail.infomaniak.com';
@@ -90,16 +94,38 @@ try {
     $mail->Username = $config['username'];
     $mail->Password = $config['password'];
     $mail->Timeout = 5;
-    $mail->Timelimit = 10;
+    $mail->getSMTPInstance()->Timelimit = 10;
     $mail->CharSet = PHPMailer::CHARSET_UTF8;
     $mail->setFrom($config['username'], 'Allgates');
     $mail->addAddress('contact@allgates.net');
     $mail->addReplyTo($email);
     $mail->Subject = 'Nouvelle demande de contact Allgates';
     $mail->Body = "Structure : {$organization}\nNom : {$name}\nEmail : {$email}\n\nBesoin :\n{$need}\n";
+    $stage = 'smtp_send';
     $mail->send();
     respond(200, ['accepted' => true]);
 } catch (Throwable $error) {
-    error_log('Allgates contact: submission failed (' . get_class($error) . ')');
+    // Classify locally; never log the raw exception or SMTP transcript, which
+    // may contain addresses, credentials or message contents.
+    $reason = 'unknown';
+    $detail = strtolower($error->getMessage());
+    foreach ([
+        'authenticate' => 'authentication_failed',
+        'connect' => 'connection_failed',
+        'tls' => 'tls_failed',
+        'recipient' => 'recipient_rejected',
+        'data not accepted' => 'message_rejected',
+        'from address' => 'sender_rejected',
+        'invalid address' => 'invalid_address',
+    ] as $needle => $category) {
+        if (str_contains($detail, $needle)) {
+            $reason = $category;
+            break;
+        }
+    }
+    $smtpError = $mail instanceof PHPMailer ? $mail->getSMTPInstance()->getError() : [];
+    $smtpCode = (int) ($smtpError['smtp_code'] ?? 0);
+    error_log('Allgates contact: submission failed (' . get_class($error)
+        . ') stage=' . $stage . ' reason=' . $reason . ' smtp_code=' . $smtpCode);
     respond(503, ['error' => 'sending_unavailable']);
 }
