@@ -6,47 +6,33 @@ import { benefits, credibility, method, site } from '../data/site';
 ---
 
 <SiteLayout
-  title="Allgates | Recherche documentaire pour avocats"
+  title="Allgates | Recherche documentaire pour entreprises"
   description={site.description}
 >
-  <section class="hero">
-    <div class="container hero__grid">
-      <div class="hero__content">
-        <p class="hero__kicker">Pour les cabinets d’avocats de Suisse romande</p>
-        <h1>Retrouvez les pièces et échanges utiles à votre dossier.</h1>
-        <p class="hero__trust">Entreprise familiale ancrée en Suisse romande depuis vingt ans.</p>
-        <p class="hero__intro">Vous nous dites ce que vous cherchez. Nous recherchons dans vos emails et documents, puis réunissons les résultats dans une application où vous pouvez les consulter et retrouver leurs sources.</p>
-        <div class="hero__actions">
-          <a class="hero-cta" href="/contact/">
-            <span>
-              <strong>Contactez-nous</strong>
-            </span>
-            <svg viewBox="0 0 32 32" aria-hidden="true">
-              <path d="M5.5 7.5h21v14h-12l-6 4v-4h-3z" />
-              <path d="M10 12h12M10 17h8" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <aside class="research-overview" aria-labelledby="research-overview-title">
-        <h2 id="research-overview-title">Un espace pour consulter vos archives</h2>
-        <p>Nous définissons ensemble les archives à explorer et les informations à rechercher.</p>
-        <dl>
-          <div><dt>Des informations regroupées</dt><dd>Les résultats des recherches demandées réunis dans votre application.</dd></div>
-          <div><dt>Un accès aux sources</dt><dd>Les documents, emails et pièces jointes à l’origine de chaque résultat.</dd></div>
-          <div><dt>Les archives choisies avec vous</dt><dd>Les données, les accès et l’hébergement définis avec votre cabinet.</dd></div>
-        </dl>
-      </aside>
+  <section class="company-intro">
+    <div class="container">
+      <p>En tant qu’<strong>entreprise familiale</strong> ancrée en <strong>Suisse romande depuis 20 ans</strong>, nous accompagnons les dirigeants, les responsables opérationnels et PME qui souhaitent simplifier leur quotidien et améliorer leurs services.</p>
     </div>
   </section>
 
-  <section id="recherche" class="section expertise">
+  <section id="recherche" class="hero">
     <div class="container">
-      <div class="section-heading"><p class="section-heading__label">Pour votre dossier</p><h2>Des résultats à consulter et à vérifier.</h2></div>
+      <div class="hero__content">
+        <h1>Vous perdez du temps à chercher des informations ?</h1>
+        <p class="hero__intro">Allgates déploie pour vous des solutions d’extraction massives pour cibler et valoriser vos données archivées en une fraction de seconde.</p>
+      </div>
+      <div class="hero__actions">
+        <a class="hero-contact" href="/contact/">
+          <span><strong>Contactez-nous</strong></span>
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M5.5 7.5h21v14h-12l-6 4v-4h-3z" />
+            <path d="M10 12h12M10 17h8" />
+          </svg>
+        </a>
+      </div>
       <div class="expertise__list">
         {benefits.map((item) => (
-          <article class="expertise__item"><h3>{item.title}</h3><p>{item.description}</p></article>
+          <article class="expertise__item"><h2>{item.title}</h2><p>{item.description}</p></article>
         ))}
       </div>
     </div>
@@ -70,7 +56,7 @@ import { benefits, credibility, method, site } from '../data/site';
 
   <section class="section method-section">
     <div class="container">
-      <div class="section-heading"><p class="section-heading__label">Comment commencer</p><h2>Commençons par les besoins de votre cabinet.</h2></div>
+      <div class="section-heading"><p class="section-heading__label">Comment commencer</p><h2>Commençons par les besoins de votre entreprise.</h2></div>
       <ol class="method">
         {method.map((item, index) => (
           <li><span class="method__index">{String(index + 1).padStart(2, '0')}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></li>
@@ -83,7 +69,7 @@ import { benefits, credibility, method, site } from '../data/site';
     <div class="container credibility__grid">
       <div><p class="section-heading__label">Pourquoi Allgates</p><h2>Une entreprise familiale en Suisse romande</h2></div>
       <div>
-        <p class="credibility__intro">Depuis vingt ans, Allgates est ancrée en Suisse romande. Aujourd’hui, notre entreprise familiale met son expérience du logiciel au service des cabinets d’avocats qui souhaitent mieux exploiter leurs archives.</p>
+        <p class="credibility__intro">Depuis vingt ans, Allgates est ancrée en Suisse romande. Aujourd’hui, notre entreprise familiale met son expérience du logiciel au service des entreprises qui souhaitent mieux exploiter leurs archives.</p>
         <ul>{credibility.map((item) => <li>{item}</li>)}</ul>
       </div>
     </div>
@@ -94,31 +80,22 @@ import { benefits, credibility, method, site } from '../data/site';
 
 <style>
   .contact-wrap { padding-block: var(--section-space); }
-  .hero { overflow: hidden; padding: var(--hero-top-space) 0 clamp(2.5rem, 4vw, 4rem); }
-  .hero__grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: clamp(2.5rem, 4vw, 5rem); align-items: center; }
-  .hero__content h1 { max-width: 19ch; font-size: clamp(2.5rem, 4.3vw, 4rem); }
-  .hero__kicker { margin-bottom: 1.5rem; color: var(--color-accent); font-size: 0.88rem; font-weight: 740; }
-  .hero__trust { margin-top: 1.4rem; font-size: clamp(0.875rem, 1.15vw, 0.95rem); font-weight: 700; white-space: nowrap; }
-  .hero__intro { max-width: 43rem; margin-top: 1rem; color: var(--color-muted); font-size: clamp(1rem, 1.5vw, 1.12rem); }
-  .research-overview { min-width: 0; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--color-surface); border-top: 3px solid var(--color-accent); }
-  .research-overview h2 { font-size: clamp(1.75rem, 2.5vw, 2.5rem); line-height: 1.15; }
-  .research-overview > p { margin-top: 1.25rem; color: var(--color-muted); }
-  .research-overview dl { margin: 1.5rem 0 0; }
-  .research-overview dl div { padding: 1rem 0; border-top: 1px solid var(--color-line); }
-  .research-overview dl div:last-child { padding-bottom: 0; }
-  .research-overview dt { font-weight: 720; }
-  .research-overview dd { margin: 0.35rem 0 0; color: var(--color-muted); overflow-wrap: anywhere; }
-  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
-  :global(.hero-cta) { display: inline-flex; width: min(100%, 24rem); min-height: 5rem; align-items: center; justify-content: space-between; gap: 2rem; border: 1px solid var(--color-ink); border-radius: 0.15rem; background: var(--color-ink); box-shadow: 0.45rem 0.45rem 0 var(--color-accent); color: white; padding: 0.9rem 1rem 0.9rem 1.25rem; text-decoration: none; transition: box-shadow 160ms ease, transform 160ms ease; }
-  :global(.hero-cta strong), :global(.hero-cta small) { display: block; }
-  :global(.hero-cta strong) { font-size: 1.02rem; font-weight: 760; line-height: 1.25; }
-  :global(.hero-cta small) { margin-top: 0.3rem; color: #b9c7d8; font-size: 0.78rem; font-weight: 620; line-height: 1.3; }
-  :global(.hero-cta svg) { width: 2.5rem; flex: none; fill: none; stroke: #7fa5ff; stroke-linecap: square; stroke-linejoin: miter; stroke-width: 1.5; }
-  :global(.hero-cta:hover) { box-shadow: 0.2rem 0.2rem 0 var(--color-accent); transform: translate(0.25rem, 0.25rem); }
-  .expertise { background: var(--color-surface); }
-  .expertise__list { border-top: 1px solid var(--color-line); }
-  .expertise__item { display: grid; grid-template-columns: minmax(12rem, 0.7fr) minmax(0, 1fr); gap: 2rem; align-items: start; border-bottom: 1px solid var(--color-line); padding: 1.5rem 0; }
-  .expertise__item p { max-width: 43rem; color: var(--color-muted); }
+  .company-intro { padding-block: clamp(1.25rem, 2vw, 1.75rem); }
+  .company-intro p { max-width: 76ch; color: var(--color-muted); font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.75; }
+  .company-intro strong { color: var(--color-ink); font-weight: 720; }
+  .hero { padding-block: clamp(2.5rem, 4vw, 4rem); background: var(--color-surface); }
+  .hero__content h1 { max-width: 24ch; font-size: clamp(2.5rem, 4.3vw, 4rem); text-wrap: balance; }
+  .hero__intro { max-width: 72ch; margin-top: 1.5rem; color: var(--color-muted); font-size: clamp(1rem, 1.5vw, 1.12rem); }
+  .hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .hero-contact { display: inline-flex; width: fit-content; max-width: 100%; min-height: 3.25rem; align-items: center; justify-content: center; gap: 1rem; border: 1px solid var(--color-ink); border-radius: 0.15rem; background: var(--color-ink); color: white; padding: 0.8rem 1.25rem; text-decoration: none; transition: background-color 160ms ease, border-color 160ms ease; }
+  .hero-contact strong { font-size: 1rem; font-weight: 720; line-height: 1.25; }
+  .hero-contact svg { width: 1.5rem; flex: none; fill: none; stroke: #7fa5ff; stroke-linecap: square; stroke-linejoin: miter; stroke-width: 1.5; }
+  .hero-contact:hover { background: var(--color-accent); border-color: var(--color-accent); }
+  .hero-contact:hover svg { stroke: white; }
+  .expertise__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3.5vw, 3rem); row-gap: 1rem; margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+  .expertise__item { display: grid; grid-template-rows: subgrid; grid-row: span 2; border-top: 1px solid var(--color-line); padding-top: 1.5rem; }
+  .expertise__item h2 { max-width: 23ch; font-size: clamp(1.25rem, 2vw, 1.55rem); letter-spacing: -0.025em; line-height: 1.25; }
+  .expertise__item p { margin-top: 0; color: var(--color-muted); }
   .legal-offer { background: #e8eef7; }
   .legal-offer__intro { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.7fr); gap: clamp(2rem, 7vw, 7rem); align-items: end; }
   .legal-offer__intro h2 { max-width: 16ch; margin-top: 1rem; }
@@ -141,22 +118,18 @@ import { benefits, credibility, method, site } from '../data/site';
   .credibility li:last-child { border-bottom: 1px solid var(--color-line); }
   .credibility li::before { position: absolute; top: 1.65rem; left: 0; width: 0.45rem; height: 0.45rem; background: var(--color-accent); content: ''; }
   @media (max-width: 900px) {
-    .hero__grid, .credibility__grid { grid-template-columns: minmax(0, 1fr); }
-    .hero__content h1 { max-width: 22ch; }
-    .research-overview { max-width: 38rem; }
+    .credibility__grid { grid-template-columns: minmax(0, 1fr); }
     .legal-offer__intro { grid-template-columns: 1fr; gap: 1.5rem; }
   }
   @media (max-width: 640px) {
-    .hero__trust { white-space: normal; }
     .hero { padding-top: 2.5rem; }
-    .expertise__item { grid-template-columns: 1fr; gap: 1rem; }
+    .expertise__list { grid-template-columns: 1fr; gap: 1.75rem; }
+    .expertise__item { grid-template-rows: auto auto; grid-row: auto; gap: 1rem; }
     .method li { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
     .method li div { grid-template-columns: 1fr; gap: 0.7rem; }
   }
   @media (max-width: 400px) {
     .hero { padding-block: 2.5rem 4rem; }
-    .hero__actions { align-items: stretch; flex-direction: column; }
-    :global(.hero-cta) { width: calc(100% - 0.45rem); gap: 1rem; }
     .method li { grid-template-columns: 1fr; }
   }
 </style>

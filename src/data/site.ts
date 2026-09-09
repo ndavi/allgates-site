@@ -3,9 +3,9 @@ export const contactEmail = 'contact@allgates.net';
 export const site = {
   name: 'Allgates',
   legalName: 'Allgates Sàrl',
-  descriptor: 'Recherche documentaire pour cabinets d’avocats',
+  descriptor: 'Recherche documentaire pour entreprises',
   description:
-    'Allgates recherche les pièces et échanges utiles à votre dossier et réunit les résultats dans une application avec leurs sources, pour les cabinets d’avocats de Suisse romande.',
+    'Allgates recherche les pièces et échanges utiles à votre dossier et réunit les résultats dans une application avec leurs sources, pour les entreprises de Suisse romande.',
   contactEmail,
 } as const;
 
@@ -24,19 +24,19 @@ export const navigation = [
 
 export const benefits = [
   {
-    title: 'Consulter les informations regroupées',
+    title: 'Un accès instantané à l’information',
     description:
-      'Les informations que vous nous demandez sont extraites de vos archives et regroupées dans votre application.',
+      'Transformez l’ensemble de vos espaces de stockage en un moteur de recherche interne ultra-rapide.',
   },
   {
-    title: 'Consulter les échanges associés',
+    title: 'Des données claires et exploitables',
     description:
-      'Consultez les emails liés à une pièce, leurs dates et leurs auteurs lorsque ces informations figurent dans les archives.',
+      'L’extraction et la synthèse de vos données informatiques rendent l’information complexe immédiatement lisible.',
   },
   {
-    title: 'Accéder aux documents d’origine',
+    title: 'Une autonomie totale',
     description:
-      'Chaque résultat renvoie au document ou à l’échange dont il provient. Vous pouvez ouvrir la source pour vérifier son contenu.',
+      'Une interface web de consultation de données sur mesure pour effectuer vos recherches, vos requêtes et vos synthèses selon vos besoins précis.',
   },
 ] as const;
 

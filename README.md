@@ -1,6 +1,6 @@
 # Allgates
 
-Site de présentation Astro en français, consacré à une offre unique de recherche documentaire pour les cabinets d’avocats de Suisse romande : une page de présentation et une page contact, en complément du bouche-à-oreille. Les mentions légales restent accessibles en pied de page.
+Site de présentation Astro en français, consacré à une offre unique de recherche documentaire pour les entreprises de Suisse romande : une page de présentation et une page contact, en complément du bouche-à-oreille. Les mentions légales restent accessibles en pied de page.
 
 ## Développement
 
