@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Deploy dist to Infomaniak (FTP)
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.INFOMANIAK_FTP_HOST }}
           username: ${{ secrets.INFOMANIAK_FTP_USERNAME }}
