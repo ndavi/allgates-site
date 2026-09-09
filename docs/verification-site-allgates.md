@@ -18,7 +18,7 @@ Aucune violation des consignes documentées du dépôt n’a été relevée. Deu
 La revue a relevé deux points :
 
 1. **Contenu dupliqué** : le titre et la promesse avocats apparaissaient dans deux pages. Ils sont maintenant définis dans `src/data/legal-offer.ts` et utilisés par l’accueil et la page avocats.
-2. **Choix du service de formulaire** : la revue a signalé que le plan laissait ce choix ouvert. L’adaptateur Formspree est conservé comme option technique dormante, sans compte créé ni donnée transmise. La documentation précise désormais qu’il ne constitue pas une décision de mise en service et explique le changement à faire si un autre service est retenu.
+2. **Choix du service de formulaire** : la revue initiale laissait ce choix ouvert. Depuis le 9 septembre 2026, la solution retenue est le SMTP Infomaniak via un script PHP. Son activation nécessite les secrets SMTP et un essai de réception après déploiement.
 
 La revue n’a identifié ni contenu confidentiel, ni chiffre ou client inventé, ni garantie non étayée. Les exports fournis sont distingués des connexions directes. Le schéma documentaire est explicitement fictif et pédagogique.
 

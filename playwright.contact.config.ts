@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const formEndpoint = 'https://formspree.io/f/testform';
+const formEndpoint = '/api/contact.php';
 
 export default defineConfig({
   testDir: './tests',

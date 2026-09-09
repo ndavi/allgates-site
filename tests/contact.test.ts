@@ -13,9 +13,9 @@ const submission = {
 
 test('une réponse explicite du service confirme la réception', async () => {
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
-    send: async () => new Response(JSON.stringify({ next: '/merci' }), {
+    send: async () => new Response(JSON.stringify({ accepted: true }), {
       status: 200,
       headers: { 'content-type': 'application/json' },
     }),
@@ -26,7 +26,7 @@ test('une réponse explicite du service confirme la réception', async () => {
 
 test('une erreur du service ne confirme pas la réception', async () => {
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
     send: async () => new Response(JSON.stringify({ ok: false }), {
       status: 422,
@@ -39,7 +39,7 @@ test('une erreur du service ne confirme pas la réception', async () => {
 
 test('une panne réseau ne confirme pas la réception', async () => {
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
     send: async () => { throw new TypeError('fetch failed'); },
   });
@@ -61,11 +61,11 @@ test('le service reçoit uniquement les champs du formulaire et le honeypot', as
   let received: Record<string, FormDataEntryValue> = {};
 
   await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
     send: async (_url, init) => {
       received = Object.fromEntries((init?.body as FormData).entries());
-      return new Response(JSON.stringify({ next: '/merci' }), {
+      return new Response(JSON.stringify({ accepted: true }), {
         status: 200,
         headers: { 'content-type': 'application/json' },
       });
@@ -83,7 +83,7 @@ test('le service reçoit uniquement les champs du formulaire et le honeypot', as
 
 test('un honeypot rempli ne produit jamais de confirmation', async () => {
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission: { ...submission, website: 'https://spam.example' },
     send: async () => new Response(JSON.stringify({ ok: true }), {
       status: 200,
@@ -96,7 +96,7 @@ test('un honeypot rempli ne produit jamais de confirmation', async () => {
 
 test('un HTTP 200 sans acceptation explicite ne confirme pas la réception', async () => {
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
     send: async () => new Response(JSON.stringify({ ok: true }), {
       status: 200,
@@ -109,9 +109,9 @@ test('un HTTP 200 sans acceptation explicite ne confirme pas la réception', asy
 
 test('une erreur HTTP ne confirme pas la réception même si le corps a le format de succès', async () => {
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
-    send: async () => new Response(JSON.stringify({ next: '/merci' }), {
+    send: async () => new Response(JSON.stringify({ accepted: true }), {
       status: 503,
       headers: { 'content-type': 'application/json' },
     }),
@@ -123,7 +123,7 @@ test('une erreur HTTP ne confirme pas la réception même si le corps a le forma
 test('une requête qui dépasse le délai rend la main sans confirmation', async () => {
   let signal: AbortSignal | undefined;
   const result = await submitContact({
-    endpoint: 'https://formspree.io/f/example-form',
+    endpoint: '/api/contact.php',
     submission,
     timeoutMs: 5,
     send: async (_url, init) => {

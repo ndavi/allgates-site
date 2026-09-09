@@ -3,7 +3,7 @@ import ContactForm from '../components/ContactForm.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 
 const configuredEndpoint = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT?.trim() ?? '';
-const endpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(configuredEndpoint)
+const endpoint = configuredEndpoint === '/api/contact.php'
   ? configuredEndpoint
   : '';
 ---

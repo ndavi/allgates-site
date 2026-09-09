@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const formEndpoint = 'https://formspree.io/f/testform';
+const formEndpoint = '/api/contact.php';
 
 const fields = (page: Page) => ({
   email: page.getByRole('textbox', { name: /email professionnel/i }),
@@ -28,7 +28,7 @@ test('une acceptation du service confirme et vide la demande', async ({ page }) 
       status: 200,
       contentType: 'application/json',
       headers: { 'access-control-allow-origin': '*' },
-      body: JSON.stringify({ next: '/merci' }),
+      body: JSON.stringify({ accepted: true }),
     });
   });
 
@@ -80,7 +80,7 @@ test('les échecs du service conservent la saisie et permettent de réessayer', 
         status: 503,
         contentType: 'application/json',
         headers: { 'access-control-allow-origin': '*' },
-        body: JSON.stringify({ next: '/merci' }),
+        body: JSON.stringify({ accepted: true }),
       });
       return;
     }
@@ -88,7 +88,7 @@ test('les échecs du service conservent la saisie et permettent de réessayer', 
       status: 200,
       contentType: 'application/json',
       headers: { 'access-control-allow-origin': '*' },
-      body: JSON.stringify({ next: '/merci' }),
+      body: JSON.stringify({ accepted: true }),
     });
   });
 
@@ -124,7 +124,7 @@ test('un double clic pendant l’envoi ne crée qu’une demande', async ({ page
       status: 200,
       contentType: 'application/json',
       headers: { 'access-control-allow-origin': '*' },
-      body: JSON.stringify({ next: '/merci' }),
+      body: JSON.stringify({ accepted: true }),
     });
   });
 

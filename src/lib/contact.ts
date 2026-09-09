@@ -48,7 +48,7 @@ export async function submitContact({
     });
     const data = await response.json();
 
-    return response.ok && typeof data?.next === 'string'
+    return response.ok && data?.accepted === true
       ? { status: 'accepted' }
       : { status: 'failed', reason: 'rejected' };
   } catch {

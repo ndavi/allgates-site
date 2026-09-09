@@ -1,40 +1,56 @@
 # Réception du formulaire de contact
 
+## SMTP Infomaniak (deploiement de production)
+
+Le workflow GitHub Actions configure `/api/contact.php`, installe PHPMailer et
+assemble le PHP dans `dist/api` avant de transferer le site en FTPS.
+Chaque push sur `main` declenche ce deploiement.
+
+Configuration initiale dans GitHub > Settings > Secrets and variables > Actions :
+
+- `INFOMANIAK_SMTP_USERNAME` : adresse mail Infomaniak utilisee pour envoyer.
+- `INFOMANIAK_SMTP_PASSWORD` : mot de passe de cette adresse, pas celui du Manager.
+
+Activer PHP 8.2 ou plus recent avec OpenSSL sur l'hebergement. Les secrets FTP
+existants restent utilises ; le serveur doit accepter FTPS explicite.
+Le workflow bloque le transfert si les secrets SMTP sont absents.
+
+L'envoi utilise `mail.infomaniak.com:587` avec STARTTLS. Le destinataire est fixe
+a `contact@allgates.net`, et Reply-To contient l'adresse du visiteur.
+La configuration se trouve dans `api/private/config.php`, protegee par une garde
+PHP et un `.htaccess` interdisant les acces HTTP. L'hebergement doit executer PHP
+et respecter `.htaccess`. Ne jamais publier le dossier assemble sur un serveur
+statique ni dans une archive publique : il contient les identifiants SMTP.
+
+Validation serveur, honeypot et limite de 5 tentatives par IP et 100 au total par
+heure. Le compteur verrouille est stocke dans le temporaire du serveur, avec IP
+hachees et sans messages. Il est local a l'instance et peut etre reinitialise par
+le nettoyage du temporaire. Le succes signifie que le SMTP a accepte le message,
+pas qu'il est arrive dans la boite de reception.
+
+Apres deploiement, effectuer une demande et verifier sa reception ainsi que
+l'adresse utilisee par Repondre. Le PHP n'est pas execute par Astro en local :
+sans endpoint configure, le comportement local reste celui decrit ci-dessous.
+
+Reference : https://www.infomaniak.com/fr/support/faq/2023/utiliser-lenvoi-authentifie-de-mail-depuis-un-site-web
+
+## Mode local sans service configure
+
 Le site fonctionne sans service externe configuré. Dans cet état, le bouton **Préparer mon email** ouvre la messagerie du visiteur avec un message adressé à `contact@allgates.net`. Le visiteur doit encore l’envoyer depuis sa messagerie et le site n’affiche aucune confirmation de réception.
 
-## Option d’envoi direct avec Formspree
+## Contrat de confirmation SMTP
 
-Un adaptateur Formspree est fourni comme option pour l’envoi direct depuis le site statique. Le choix du service de réception reste ouvert : aucun compte, formulaire ou destinataire n’a été créé chez ce fournisseur pendant l’implémentation, et aucune donnée ne lui est transmise tant que l’option n’est pas configurée.
+Le navigateur envoie les champs `email`, `structure`, `nom`, `besoin` et
+`_gotcha` vers `/api/contact.php`. Aucun fichier n'est accepté. Le bouton est
+désactivé pendant l'envoi et la requête est interrompue après 15 secondes.
 
-Si cette option est retenue, suivre les étapes ci-dessous. Un autre service nécessitera d’adapter le contrat de réception dans `src/lib/contact.ts` et la validation de son adresse dans `src/pages/contact.astro`. Les informations de confidentialité devront correspondre au service effectivement retenu avant son activation publique.
+Le formulaire confirme l'envoi uniquement avec un statut HTTP réussi et une
+réponse JSON contenant `accepted: true`. Le script renvoie cette réponse après
+acceptation du message par le serveur SMTP. Une erreur ou une réponse ambiguë
+conserve les champs saisis et affiche un échec.
 
-1. Créer un formulaire dans Formspree et définir `contact@allgates.net` comme destinataire.
-2. Vérifier l’adresse destinataire depuis le compte Formspree.
-3. Relever l’endpoint public au format `https://formspree.io/f/identifiant`.
-4. Définir `PUBLIC_CONTACT_FORM_ENDPOINT` dans l’environnement de compilation ou dans un fichier `.env` local non versionné.
-5. Compiler le site et effectuer un envoi manuel contrôlé. Vérifier à la fois la confirmation dans la page et la présence de la demande dans Formspree ou dans la boîte destinataire.
+Les tests navigateur interceptent `/api/contact.php` et simulent ses réponses ;
+ils n'exécutent pas PHP et n'envoient aucun email réel.
 
-Le navigateur envoie les champs `email`, `structure`, `nom`, `besoin` et `_gotcha`. Aucun fichier n’est accepté. `_gotcha` est le honeypot reconnu par Formspree. Le bouton est désactivé pendant l’envoi et la requête est interrompue après 15 secondes.
-
-## Contrat de confirmation
-
-Le site confirme la réception uniquement lorsque la réponse possède les deux caractéristiques suivantes :
-
-- un statut HTTP réussi ;
-- un corps JSON contenant la propriété `next` sous forme de chaîne, qui est le format de succès reconnu par le client officiel Formspree.
-
-Une erreur HTTP, un autre corps de réponse, une panne réseau ou un dépassement du délai conserve les champs saisis et affiche un échec. Un honeypot rempli est refusé localement et ne produit aucune confirmation.
-
-Références officielles :
-
-- [Envoi AJAX avec Formspree](https://help.formspree.io/articles/building-your-form/submit-forms-with-javascript-ajax)
-- [Honeypot `_gotcha`](https://help.formspree.io/fr/articles/building-your-form/honeypot-spam-filtering)
-- [Détection du format de succès dans le client officiel](https://github.com/formspree/formspree-js/blob/main/packages/formspree-core/src/submission.ts#L26-L32)
-- [Traitement de la réponse dans le client officiel](https://github.com/formspree/formspree-js/blob/main/packages/formspree-core/src/core.ts#L66-L107)
-
-Les tests de la frontière de réception et du parcours navigateur n’appellent jamais Formspree. Le parcours navigateur compile une version isolée du site et intercepte l’endpoint externe :
-
-```sh
-npm run test:contact
-npm run test:e2e:service
-```
+`npm run test:contact` vérifie le client d'envoi.
+`npm run test:e2e:service` vérifie le parcours navigateur avec le service simulé.
