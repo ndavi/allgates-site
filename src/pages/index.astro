@@ -82,8 +82,8 @@ import { benefits, method, site } from '../data/site';
 
 <style>
   .contact-wrap { padding-block: var(--section-space); }
-  .company-intro { display: flex; align-items: flex-start; gap: 1rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding: 1.25rem 1.5rem; border-left: 3px solid var(--color-accent); background: var(--color-bg); }
-  .company-intro p { color: var(--color-muted); font-size: 0.92rem; line-height: 1.7; }
+  .company-intro { display: flex; align-items: flex-start; gap: 1rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding: 1.25rem 1.5rem; border-left: 3px solid var(--color-accent); background: var(--color-bg); min-width: 0; }
+  .company-intro p { color: var(--color-muted); font-size: 0.92rem; line-height: 1.7; min-width: 0; overflow-wrap: anywhere; }
   .company-intro strong { color: var(--color-ink); font-weight: 680; }
   .hero { padding-block: clamp(3rem, 6vw, 5.5rem) clamp(2.5rem, 4vw, 4rem); background: var(--color-surface); }
   .hero__layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
