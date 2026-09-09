@@ -57,3 +57,16 @@ L’utilisateur a confirmé le caractère familial de l’entreprise et ses ving
 Le projet Sites existant est conservé dans `.openai/hosting.json`. La sortie statique se trouve dans `dist/`. L’implémentation ne fixe pas l’hébergement public définitif.
 
 Avant une publication publique, renseigner le domaine définitif, l’identité juridique et les mentions adaptées au fonctionnement effectivement retenu. Pour recevoir les demandes directement depuis le site, configurer puis vérifier le service décrit dans `docs/contact-setup.md`.
+
+## Déploiement automatique sur Infomaniak
+
+Un workflow GitHub Actions (`.github/workflows/deploy-infomaniak.yml`) déploie le site à chaque `push` sur `main`.
+
+Configurer les secrets GitHub suivants :
+
+- `INFOMANIAK_FTP_HOST` : hôte FTP
+- `INFOMANIAK_FTP_USERNAME` : nom d’utilisateur FTP
+- `INFOMANIAK_FTP_PASSWORD` : mot de passe FTP
+- `INFOMANIAK_FTP_TARGET_DIR` : répertoire de destination sur le serveur (ex. `/www/`)
+
+Le déploiement utilise FTP pour synchroniser `dist/` vers le répertoire distant défini.
