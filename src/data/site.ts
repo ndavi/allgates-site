@@ -31,7 +31,7 @@ export const benefits = [
   {
     title: 'Des données claires et exploitables',
     description:
-      'L’extraction et la synthèse de vos données informatiques rendent l’information complexe immédiatement lisible.',
+      'En extrayant et en synthétisant vos données, nous rendons les sujets complexes clairs et accessibles au premier coup d’œil.',
   },
   {
     title: 'Une autonomie totale',
