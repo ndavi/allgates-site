@@ -2,6 +2,7 @@
 import ContactCta from '../components/ContactCta.astro';
 import InvestigationFlow from '../components/InvestigationFlow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
+import SwissFlag from '../components/SwissFlag.astro';
 import { benefits, credibility, method, site } from '../data/site';
 ---
 
@@ -29,6 +30,7 @@ import { benefits, credibility, method, site } from '../data/site';
       </div>
       </div>
       <div class="company-intro">
+        <SwissFlag />
         <p>Allgates Sàrl est une entreprise familiale basée en Suisse romande depuis 20 ans. Nous accompagnons les dirigeants, les responsables opérationnels et les PME qui souhaitent simplifier leur quotidien et améliorer leurs services.</p>
       </div>
       <div class="expertise__list">
@@ -81,7 +83,7 @@ import { benefits, credibility, method, site } from '../data/site';
 
 <style>
   .contact-wrap { padding-block: var(--section-space); }
-  .company-intro { margin-top: clamp(2.5rem, 5vw, 4rem); padding: 1.25rem 1.5rem; border-left: 3px solid var(--color-accent); background: var(--color-bg); }
+  .company-intro { display: flex; align-items: flex-start; gap: 1rem; margin-top: clamp(2.5rem, 5vw, 4rem); padding: 1.25rem 1.5rem; border-left: 3px solid var(--color-accent); background: var(--color-bg); }
   .company-intro p { max-width: 95ch; color: var(--color-muted); font-size: 0.92rem; line-height: 1.7; }
   .company-intro strong { color: var(--color-ink); font-weight: 680; }
   .hero { padding-block: clamp(3rem, 6vw, 5.5rem) clamp(2.5rem, 4vw, 4rem); background: var(--color-surface); }
