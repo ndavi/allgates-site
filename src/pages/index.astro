@@ -3,7 +3,7 @@ import ContactCta from '../components/ContactCta.astro';
 import InvestigationFlow from '../components/InvestigationFlow.astro';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import SwissFlag from '../components/SwissFlag.astro';
-import { benefits, credibility, method, site } from '../data/site';
+import { benefits, method, site } from '../data/site';
 ---
 
 <SiteLayout
@@ -72,8 +72,7 @@ import { benefits, credibility, method, site } from '../data/site';
     <div class="container credibility__grid">
       <div><p class="section-heading__label">Pourquoi Allgates</p><h2>Une entreprise familiale en Suisse romande</h2></div>
       <div>
-        <p class="credibility__intro">Depuis vingt ans, Allgates est ancrée en Suisse romande. Aujourd’hui, notre entreprise familiale met son expérience du logiciel au service des entreprises qui souhaitent mieux exploiter leurs archives.</p>
-        <ul>{credibility.map((item) => <li>{item}</li>)}</ul>
+        <p class="credibility__intro">Solidement implantée en Suisse romande depuis 20 ans, notre entreprise familiale spécialisée en conception logicielle accompagne les entreprises dans la valorisation et l'exploitation optimale de leurs archives.</p>
       </div>
     </div>
   </section>
