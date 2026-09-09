@@ -125,7 +125,24 @@ try {
     }
     $smtpError = $mail instanceof PHPMailer ? $mail->getSMTPInstance()->getError() : [];
     $smtpCode = (int) ($smtpError['smtp_code'] ?? 0);
+    $smtpDetail = '';
+    if ($stage === 'smtp_send' && $reason === 'message_rejected') {
+        // Only the server's rejection text, never an AUTH exchange or transcript.
+        $smtpDetail = (string) ($smtpError['detail'] ?? '');
+        $sensitive = [$email, $organization, $name, $need,
+            (string) ($config['username'] ?? ''), (string) ($config['password'] ?? '')];
+        usort($sensitive, static fn(string $a, string $b): int => strlen($b) <=> strlen($a));
+        foreach ($sensitive as $value) {
+            if ($value !== '') {
+                $smtpDetail = str_replace([$value, base64_encode($value)], '[redacted]', $smtpDetail);
+            }
+        }
+        $smtpDetail = preg_replace('/[^\s<>@]+@[^\s<>@]+/', '[email]', $smtpDetail) ?? '';
+        $smtpDetail = preg_replace('/[\x00-\x1f\x7f]/', ' ', $smtpDetail) ?? '';
+        $smtpDetail = substr($smtpDetail, 0, 500);
+    }
     error_log('Allgates contact: submission failed (' . get_class($error)
-        . ') stage=' . $stage . ' reason=' . $reason . ' smtp_code=' . $smtpCode);
+        . ') stage=' . $stage . ' reason=' . $reason . ' smtp_code=' . $smtpCode
+        . ' smtp_detail=' . $smtpDetail);
     respond(503, ['error' => 'sending_unavailable']);
 }
