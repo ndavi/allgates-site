@@ -146,3 +146,18 @@ test('un double clic pendant l’envoi ne crée qu’une demande', async ({ page
   await expect(page.locator('[data-kind="success"]')).toContainText(/message.*reçu/i);
   expect(requestCount).toBe(1);
 });
+
+test('une adresse refusee affiche une erreur precise et conserve la demande', async ({ page }) => {
+  await page.route(formEndpoint, route => route.fulfill({
+    status: 422,
+    contentType: 'application/json',
+    body: JSON.stringify({ error: 'invalid_email' }),
+  }));
+  await page.goto('/contact/');
+  const formFields = await fillContactForm(page);
+  await page.getByRole('button', { name: /envoyer ma demande/i }).click();
+  await expect(page.getByRole('alert')).toHaveText('Adresse mail saisie invalide');
+  await expect(formFields.email).toHaveValue('lea@example.test');
+  await expect(formFields.need).toHaveValue('Nous souhaitons préparer un premier échange de cadrage.');
+  await expect(page.getByRole('button', { name: /envoyer ma demande/i })).toBeEnabled();
+});

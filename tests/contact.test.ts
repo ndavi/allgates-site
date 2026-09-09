@@ -142,3 +142,21 @@ test('une requête qui dépasse le délai rend la main sans confirmation', async
     aborted: true,
   });
 });
+
+test('une adresse refusee en 422 remonte une erreur email precise', async () => {
+  const result = await submitContact({
+    endpoint: '/api/contact.php',
+    submission,
+    send: async () => new Response(JSON.stringify({ error: 'invalid_email' }), { status: 422 }),
+  });
+  assert.deepEqual(result, { status: 'failed', reason: 'invalid_email' });
+});
+
+test('une panne serveur ne devient pas une erreur de saisie email', async () => {
+  const result = await submitContact({
+    endpoint: '/api/contact.php',
+    submission,
+    send: async () => new Response(JSON.stringify({ error: 'invalid_email' }), { status: 503 }),
+  });
+  assert.deepEqual(result, { status: 'failed', reason: 'rejected' });
+});

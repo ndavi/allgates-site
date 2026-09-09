@@ -16,7 +16,7 @@ export interface SubmitContactOptions {
 export type ContactResult =
   | { status: 'accepted' }
   | { status: 'unavailable' }
-  | { status: 'failed'; reason: 'rejected' | 'network' };
+  | { status: 'failed'; reason: 'rejected' | 'network' | 'invalid_email' };
 
 export async function submitContact({
   endpoint,
@@ -47,6 +47,10 @@ export async function submitContact({
       signal: AbortSignal.timeout(timeoutMs),
     });
     const data = await response.json();
+
+    if (response.status === 422 && data?.error === 'invalid_email') {
+      return { status: 'failed', reason: 'invalid_email' };
+    }
 
     return response.ok && data?.accepted === true
       ? { status: 'accepted' }

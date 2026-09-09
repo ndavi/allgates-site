@@ -15,8 +15,15 @@ Activer PHP 8.2 ou plus recent avec OpenSSL sur l'hebergement. Les secrets FTP
 existants restent utilises ; le serveur doit accepter FTPS explicite.
 Le workflow bloque le transfert si les secrets SMTP sont absents.
 
-L'envoi utilise `mail.infomaniak.com:587` avec STARTTLS. Le destinataire est fixe
-a `contact@allgates.net`, et Reply-To contient l'adresse du visiteur.
+L'envoi utilise `mail.infomaniak.com:587` avec STARTTLS. L'expediteur et le
+destinataire sont fixes a `contact@allgates.net`. Le secret SMTP doit correspondre
+a cette boite mail. L'adresse du visiteur figure dans le corps du message et
+dans Reply-To pour permettre une reponse directe.
+
+Une adresse mal formee ou un rejet SMTP RBL identifiant explicitement l'adresse
+du visiteur produit HTTP 422 avec `error: invalid_email`. Le formulaire affiche
+« Adresse mail saisie invalide » et conserve la saisie. Un rejet visant notre
+propre boite ou une autre erreur SMTP reste une erreur generale d'envoi.
 La configuration se trouve dans `api/private/config.php`, protegee par une garde
 PHP et un `.htaccess` interdisant les acces HTTP. L'hebergement doit executer PHP
 et respecter `.htaccess`. Ne jamais publier le dossier assemble sur un serveur
@@ -29,7 +36,7 @@ le nettoyage du temporaire. Le succes signifie que le SMTP a accepte le message,
 pas qu'il est arrive dans la boite de reception.
 
 Apres deploiement, effectuer une demande et verifier sa reception ainsi que
-l'adresse utilisee par Repondre. Le PHP n'est pas execute par Astro en local :
+la presence de l'adresse du visiteur dans le corps. Le PHP n'est pas execute par Astro en local :
 sans endpoint configure, le comportement local reste celui decrit ci-dessous.
 
 Reference : https://www.infomaniak.com/fr/support/faq/2023/utiliser-lenvoi-authentifie-de-mail-depuis-un-site-web

@@ -186,7 +186,9 @@ const emailHref = `mailto:${contactEmail}`;
       } else {
         status.dataset.kind = 'error';
         status.setAttribute('role', 'alert');
-        status.textContent = result.status === 'unavailable'
+        status.textContent = result.status === 'failed' && result.reason === 'invalid_email'
+          ? 'Adresse mail saisie invalide'
+          : result.status === 'unavailable'
           ? 'L’envoi direct est momentanément indisponible. Vous pouvez nous écrire avec le lien ci-dessous.'
           : 'Votre demande n’a pas pu être confirmée. Votre saisie est conservée : réessayez ou écrivez-nous directement.';
       }

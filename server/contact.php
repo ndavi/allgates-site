@@ -43,8 +43,10 @@ $email = field('email', 254, true);
 $organization = field('structure', 300, true);
 $name = field('nom', 200);
 $need = field('besoin', 12000, true);
-if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email)
-    || field('_gotcha', 1000) !== '') {
+if (!filter_var($email, FILTER_VALIDATE_EMAIL) || preg_match('/[\r\n]/', $email)) {
+    respond(422, ['error' => 'invalid_email']);
+}
+if (field('_gotcha', 1000) !== '') {
     respond(422, ['error' => 'invalid_fields']);
 }
 
@@ -96,7 +98,7 @@ try {
     $mail->Timeout = 5;
     $mail->getSMTPInstance()->Timelimit = 10;
     $mail->CharSet = PHPMailer::CHARSET_UTF8;
-    $mail->setFrom($config['username'], 'Allgates');
+    $mail->setFrom('contact@allgates.net', 'Allgates');
     $mail->addAddress('contact@allgates.net');
     $mail->addReplyTo($email);
     $mail->Subject = 'Nouvelle demande de contact Allgates';
@@ -125,6 +127,17 @@ try {
     }
     $smtpError = $mail instanceof PHPMailer ? $mail->getSMTPInstance()->getError() : [];
     $smtpCode = (int) ($smtpError['smtp_code'] ?? 0);
+    // Attribute an RBL rejection to the visitor only when the SMTP response
+    // identifies their exact address, distinct from our own mailbox.
+    $rejectedAddresses = [];
+    $rejectionDetail = (string) ($smtpError['detail'] ?? '');
+    preg_match_all('/[a-z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[a-z0-9.-]+/i', $rejectionDetail, $rejectedAddresses);
+    $invalidVisitorEmail = $stage === 'smtp_send'
+        && $smtpCode === 554
+        && str_contains(strtolower($rejectionDetail), 'is rbl blacklisted')
+        && strcasecmp($email, 'contact@allgates.net') !== 0
+        && strcasecmp($email, (string) ($config['username'] ?? '')) !== 0
+        && in_array(strtolower($email), array_map('strtolower', $rejectedAddresses[0] ?? []), true);
     $smtpDetail = '';
     if ($stage === 'smtp_send' && $reason === 'message_rejected') {
         // Only the server's rejection text, never an AUTH exchange or transcript.
@@ -144,5 +157,8 @@ try {
     error_log('Allgates contact: submission failed (' . get_class($error)
         . ') stage=' . $stage . ' reason=' . $reason . ' smtp_code=' . $smtpCode
         . ' smtp_detail=' . $smtpDetail);
+    if ($invalidVisitorEmail) {
+        respond(422, ['error' => 'invalid_email']);
+    }
     respond(503, ['error' => 'sending_unavailable']);
 }
